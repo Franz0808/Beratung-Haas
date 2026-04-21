@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paarberatung Haas — Online &amp; Offline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+    integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+    integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+    integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+    crossorigin="anonymous"></script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #1b3d52;
+      --mid: #2a5c74;
+      --accent: #D98C2B;
+      --white: #ffffff;
+      --warm: #f5f3f0;
+      --text: #1b3d52;
+      --font: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.7;
+      background: var(--white);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ── TYPOGRAPHY ─────────────────────────────── */
+    .label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: rgba(27, 61, 82, 0.5);
+    }
+
+    .title-hero {
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--navy);
+    }
+
+    .title-section {
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--navy);
+    }
+
+    .body-text {
+      font-size: clamp(15px, 1.1vw, 18px);
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--navy);
+    }
+
+    /* ── LAYOUT ─────────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-sm {
+      padding: 64px 0;
+    }
+
+    .section-alt {
+      background: var(--warm);
+    }
+
+    .section-dark {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    /* ── NAV ─────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid rgba(27, 61, 82, 0.12);
+      transition: box-shadow 0.3s;
+    }
+
+    .nav.scrolled {
+      box-shadow: 0 2px 20px rgba(27, 61, 82, 0.1);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--navy);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav-link {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--navy);
+      cursor: pointer;
+      transition: color 0.2s;
+      background: none;
+      border: none;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    .nav-link.active {
+      color: var(--navy);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 2px;
+    }
+
+    .nav-cta {
+      background: var(--navy);
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--mid);
+    }
+
+    /* ── BUTTONS ─────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--navy);
+      color: #fff;
+      padding: 18px 36px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      border: 2px solid var(--navy);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .btn-primary:hover {
+      background: var(--mid);
+      border-color: var(--mid);
+    }
+
+    .btn-accent {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--navy);
+      color: #fff;
+      padding: 18px 36px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      border: 2px solid var(--navy);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .btn-accent:hover {
+      background: var(--mid);
+      border-color: var(--mid);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--navy);
+      padding: 18px 36px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      border: 2px solid var(--navy);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .btn-outline:hover {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .btn-outline-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: #fff;
+      padding: 18px 36px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .btn-outline-white:hover {
+      background: #fff;
+      color: var(--navy);
+      border-color: #fff;
+    }
+
+    .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--navy);
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 3px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .link-arrow:hover {
+      color: var(--accent);
+    }
+
+    /* ── SERVICE CARD ───────────────────────────── */
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--navy);
+      padding: 48px;
+      transition: box-shadow 0.25s;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 20px 60px rgba(27, 61, 82, 0.15);
+    }
+
+    .service-card-dark {
+      background: var(--navy);
+      border-top: 4px solid var(--accent);
+      padding: 48px;
+      color: #fff;
+    }
+
+    /* ── ACCENT ELEMENTS ────────────────────────── */
+    .accent-bar {
+      width: 48px;
+      height: 4px;
+      background: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .accent-left {
+      border-left: 4px solid var(--accent);
+      padding-left: 24px;
+    }
+
+    /* ── FAQ ACCORDION ─────────────────────────── */
+    .faq-item {
+      border-bottom: 1px solid rgba(27, 61, 82, 0.15);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      font-family: var(--font);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-answer {
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--navy);
+    }
+
+    /* ── FORM ──────────────────────────────────── */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--navy);
+      background: var(--white);
+      border: 1px solid rgba(27, 61, 82, 0.3);
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* ── TWEAKS PANEL ──────────────────────────── */
+    .tweaks-panel {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--white);
+      border: 1px solid var(--navy);
+      padding: 24px;
+      width: 280px;
+      box-shadow: 0 20px 60px rgba(27, 61, 82, 0.2);
+      z-index: 999;
+      font-family: var(--font);
+    }
+
+    .tweaks-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .tweak-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .tweak-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .tweak-select,
+    .tweak-input {
+      font-family: var(--font);
+      font-size: 12px;
+      padding: 4px 8px;
+      border: 1px solid rgba(27, 61, 82, 0.3);
+      border-radius: 0;
+      color: var(--navy);
+      background: var(--white);
+    }
+
+    /* ── MOBILE ────────────────────────────────── */
+    .hamburger {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--navy);
+      }
+
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        background: var(--white);
+        z-index: 200;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+      }
+
+      .mobile-menu-link {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--navy);
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .hero-img-wrap {
+        height: 340px !important;
+        order: -1;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr !important;
+      }
+
+      .three-col {
+        grid-template-columns: 1fr !important;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <script type="text/babel">
+
+    const { useState, useEffect, useRef } = React;
+
+    // ── TWEAKS DEFAULTS ──────────────────────────────────────────────────────────
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "accentColor": "#D98C2B",
+      "heroLayout": "split",
+      "navStyle": "light"
+    } /*EDITMODE-END*/;
+
+    // ── ICONS ────────────────────────────────────────────────────────────────────
+    const ArrowRight = () =>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+      </svg>;
+
+    const ChevronDown = () =>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="6 9 12 15 18 9" />
+      </svg>;
+
+    const ChevronUp = () =>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="18 15 12 9 6 15" />
+      </svg>;
+
+    const X = () =>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+      </svg>;
+
+    const Check = () =>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>;
+
+    const Mail = () =>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />
+      </svg>;
+
+    const Phone = () =>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.22 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z" />
+      </svg>;
+
+    const MapPin = () =>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+      </svg>;
+
+
+    // ── NAV ──────────────────────────────────────────────────────────────────────
+    function Nav({ page, setPage }) {
+      const [scrolled, setScrolled] = useState(false);
+      const [menuOpen, setMenuOpen] = useState(false);
+
+      useEffect(() => {
+        const fn = () => setScrolled(window.scrollY > 20);
+        window.addEventListener('scroll', fn);
+        return () => window.removeEventListener('scroll', fn);
+      }, []);
+
+      const links = [
+        { id: 'home', label: 'Start' },
+        { id: 'leistungen', label: 'Leistungen' },
+        { id: 'ueber', label: 'Über mich' },
+        { id: 'faq', label: 'FAQ' },
+        { id: 'kontakt', label: 'Kontakt' }];
+      const subPages = ['paarberatung', 'lebensberatung'];
+
+
+      const go = (id) => { setPage(id); setMenuOpen(false); window.scrollTo(0, 0); };
+
+      return (
+        <>
+          <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
+            <div className="nav-inner">
+              <button className="nav-logo" onClick={() => go('home')}>
+                Haas<span style={{ color: 'var(--accent)' }}>.</span>Beratung
+              </button>
+              <div className="nav-links">
+                {links.map((l) =>
+                  <button key={l.id} className={`nav-link${page === l.id || (l.id === 'leistungen' && subPages.includes(page)) ? ' active' : ''}`} onClick={() => go(l.id)}>
+                    {l.label}
+                  </button>
+                )}
+                <button className="nav-cta" onClick={() => go('kontakt')}>Erstgespräch →</button>
+              </div>
+              <button className="hamburger" onClick={() => setMenuOpen(true)} aria-label="Menü">
+                <span /><span /><span />
+              </button>
+            </div>
+          </nav>
+
+          {menuOpen &&
+            <div className="mobile-menu">
+              <button style={{ position: 'absolute', top: 24, right: 24, background: 'none', border: 'none', cursor: 'pointer' }} onClick={() => setMenuOpen(false)}><X /></button>
+              {links.map((l) =>
+                <button key={l.id} className="mobile-menu-link" onClick={() => go(l.id)}>{l.label}</button>
+              )}
+              <button className="btn-accent" onClick={() => go('kontakt')}>Erstgespräch anfragen <ArrowRight /></button>
+            </div>
+          }
+        </>);
+
+    }
+
+    // ── HOME PAGE ────────────────────────────────────────────────────────────────
+    function HomePage({ setPage }) {
+      const go = (id) => { setPage(id); window.scrollTo(0, 0); };
+
+      const painPoints = [
+        'Gespräche eskalieren schneller, als du reagieren kannst',
+        'Ihr dreht euch immer wieder im Kreis',
+        'Du fühlst dich nicht gehört oder nicht verstanden',
+        'Nähe ist im Alltag verloren gegangen',
+        'Du bist unsicher, ob du bleiben oder gehen sollst',
+        'Du analysierst alles – und kommst trotzdem nicht weiter'];
+
+
+      const pillars = [
+        { label: 'Wissenschaft', text: 'Validierte Methoden aus Verhaltenspsychologie und Systemischer Beratung.' },
+        { label: 'Erfahrung', text: 'Über zehn Jahre Beratungspraxis in unterschiedlichsten Settings.' },
+        { label: 'Persönlichkeit', text: 'Als ehemaliges Straßenkind habe ich Beziehungen selbst von Grund auf erlernen müssen.' }];
+
+
+      const services = [
+        { id: 'paarberatung', title: 'Paarberatung', sub: 'Für Paare', desc: 'Wenn ihr euch im Kreis dreht, emotional verloren habt oder das Schweigen lauter wird als jedes Gespräch.' },
+        { id: 'lebensberatung', title: 'Lebensberatung', sub: 'Für Einzelpersonen', desc: 'Wenn du in einer persönlichen Krise steckst, vor einer wichtigen Entscheidung stehst oder deine eigenen Muster verstehen willst.' }];
+
+
+      return (
+        <main>
+          {/* ── HERO ── */}
+          <section style={{ paddingTop: 72, minHeight: '90vh', display: 'flex', alignItems: 'center', background: '#fff' }}>
+            <div className="container" style={{ width: '100%' }}>
+              <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, alignItems: 'center', minHeight: 'calc(90vh - 72px)', paddingTop: 80, paddingBottom: 80 }}>
+                <div>
+                  <div className="label" style={{ marginBottom: 24 }}>ONLINE & OFFLINE</div>
+                  <h1 className="title-hero" style={{ marginBottom: 28, color: "rgb(27, 61, 82)" }}>
+                    Klarheit für<br />
+                    <span style={{ color: 'var(--accent)' }}>Beziehungen,</span><br />
+                    Konflikte &amp;<br />
+                    Wendepunkte.
+                  </h1>
+                  <p className="body-text" style={{ maxWidth: 480, marginBottom: 40 }}>
+                    Wenn Gespräche immer wieder eskalieren, Nähe verloren geht oder du nicht mehr weißt, was du eigentlich fühlst oder willst – braucht es manchmal einen klaren Blick von außen.
+                  </p>
+                  <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                    <button className="btn-accent" onClick={() => go('kontakt')}>
+                      Erstgespräch anfragen <ArrowRight />
+                    </button>
+                    <button className="btn-outline" onClick={() => go('leistungen')}>
+                      Alle Leistungen
+                    </button>
+                  </div>
+
+                </div>
+                <div className="hero-img-wrap" style={{ height: '75vh', position: 'relative', overflow: 'hidden' }}>
+                  <img src="uploads/DSC_8576.JPG" alt="Kim Haas – Beraterin" style={{ objectPosition: 'center top' }} />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── PAIN POINTS ── */}
+          <section className="section section-alt">
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, alignItems: 'end', marginBottom: 64 }} className="two-col">
+                <div>
+                  <h2 className="title-section">Kommt dir das bekannt vor?</h2>
+                </div>
+                <div style={{ borderLeft: '3px solid rgba(27,61,82,0.2)', paddingLeft: 28 }}>
+                  <p className="body-text" style={{ fontStyle: 'italic', marginBottom: 12 }}>
+                    „Es geht nicht um den vergessenen Joghurt. Es ging niemals um den Joghurt. Und doch kann an dem Joghurt auf einmal ein ganzes Universum einbrechen."
+                  </p>
+                  <p className="body-text" style={{ fontWeight: 700, fontSize: 14 }}>Das Problem ist, dass ihr die Dynamik dahinter nicht erkennt.</p>
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0 }} className="three-col">
+                {painPoints.map((p, i) =>
+                  <div key={i} style={{
+                    padding: '28px 32px',
+                    borderTop: '1px solid rgba(27,61,82,0.12)',
+                    borderRight: i % 3 < 2 ? '1px solid rgba(27,61,82,0.12)' : 'none',
+                  }}>
+                    <span style={{ display: 'block', fontSize: 10, fontWeight: 700, letterSpacing: '0.4em', color: 'rgba(27,61,82,0.3)', marginBottom: 10 }}>{String(i + 1).padStart(2, '0')}</span>
+                    <span className="body-text" style={{ fontSize: 15 }}>{p}</span>
+                  </div>
+                )}
+              </div>
+
+              <div style={{ borderTop: '1px solid rgba(27,61,82,0.12)', padding: '28px 32px 0', display: 'flex', justifyContent: 'flex-end' }}>
+                <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.04em', color: 'rgba(27,61,82,0.45)', maxWidth: 420, textAlign: 'right' }}>
+                  Und gleichzeitig merkst du: So wie es gerade ist, kann es nicht bleiben.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ── SERVICES OVERVIEW ── */}
+          <section className="section">
+            <div className="container">
+              <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 64px' }}>
+                <div className="label" style={{ marginBottom: 16 }}>Angebote</div>
+                <h2 className="title-section">Was dich hier erwartet.</h2>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }} className="two-col">
+                {services.map((s, i) =>
+                  <div key={s.id} style={{ padding: '48px', border: '1px solid var(--navy)', borderRight: i === 0 ? 'none' : '1px solid var(--navy)', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'absolute', top: 0, left: 0, width: 4, height: '100%', background: 'var(--accent)', opacity: 0 }} className="card-accent-bar" />
+                    <div className="label" style={{ marginBottom: 12 }}>{s.sub}</div>
+                    <h3 style={{ fontSize: 26, fontWeight: 700, letterSpacing: '-0.03em', marginBottom: 16 }}>{s.title}</h3>
+                    <p className="body-text" style={{ fontSize: 15, marginBottom: 32 }}>{s.desc}</p>
+                    <button className="link-arrow" onClick={() => go(s.id)}>Mehr erfahren <ArrowRight /></button>
+                  </div>
+                )}
+              </div>
+              <div style={{ textAlign: 'center', marginTop: 48 }}>
+                <button className="btn-primary" onClick={() => go('leistungen')}>Passendes Format finden <ArrowRight /></button>
+              </div>
+            </div>
+          </section>
+
+          {/* ── WHAT MAKES THIS DIFFERENT ── */}
+          <section className="section section-dark">
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }} className="two-col">
+                <div>
+                  <div className="label" style={{ marginBottom: 16, color: 'rgba(217,140,43,1)' }}>Mein Ansatz</div>
+                  <h2 className="title-section" style={{ color: '#fff', marginBottom: 28 }}>Was meine Arbeit unterscheidet.</h2>
+                  <p style={{ fontWeight: 300, fontSize: 16, lineHeight: 1.75, color: 'rgba(255,255,255,0.85)', marginBottom: 24 }}>
+                    Ich arbeite nicht mit Standard-Coaching-Methoden. Und auch nicht mit „Kommunikationstipps". Ich arbeite mit einem klaren Blick auf das, was zwischen den Zeilen passiert.
+                  </p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 36 }}>
+                    {['Beziehungsmuster', 'Emotionale Dynamiken', 'Unbewusste Reaktionen', 'Was zwischen den Zeilen passiert'].map((t) =>
+                      <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <span style={{ color: 'rgba(255,255,255,0.5)', flexShrink: 0 }}><Check /></span>
+                        <span style={{ fontWeight: 300, fontSize: 16, color: 'rgba(255,255,255,0.85)' }}>{t}</span>
+                      </div>
+                    )}
+                  </div>
+                  <p style={{ fontWeight: 400, fontSize: 15, color: 'rgba(255,255,255,0.7)', borderLeft: '3px solid rgba(255,255,255,0.2)', paddingLeft: 20 }}>
+                    „Jetzt verstehe ich zum ersten Mal, was hier eigentlich passiert." – Das sagen viele meiner Klient:innen nach kurzer Zeit. Und genau das ist oft der Wendepunkt.
+                  </p>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+                  {pillars.map((p, i) =>
+                    <div key={i} style={{ padding: '28px 0', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: 8 }}>{String(i + 1).padStart(2, '0')} {p.label}</div>
+                      <p style={{ fontWeight: 300, fontSize: 15, color: 'rgba(255,255,255,0.85)' }}>{p.text}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── ABOUT TEASER ── */}
+          <section className="section">
+            <div className="container">
+              <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
+                <div style={{ position: 'relative' }}>
+                  <div style={{ height: 520, overflow: 'hidden' }}>
+                    <img src="uploads/WhatsApp Image 2026-04-16 at 10.15.50.jpeg" alt="Kim Haas" style={{ objectPosition: 'center 20%' }} />
+                  </div>
+                  <div style={{ position: 'absolute', bottom: -24, right: -24, background: 'var(--accent)', padding: '24px 32px', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                    <span style={{ fontSize: 32, fontWeight: 700, color: 'var(--navy)' }}>10+</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--navy)' }}>Jahre Erfahrung</span>
+                  </div>
+                </div>
+                <div>
+                  <div className="label" style={{ marginBottom: 16 }}>Über mich</div>
+                  <h2 className="title-section" style={{ marginBottom: 24 }}>Du musst das nicht alleine lösen.</h2>
+                  <p className="body-text" style={{ marginBottom: 16 }}>
+                    Ich bin Gesundheitswissenschaftlerin mit Schwerpunkt Verhaltenspsychologie (M.Sc.) und Systemischer Coach. Ich arbeite mit einem klaren Blick für Dynamiken, viel Gespür für zwischenmenschliche Prozesse und einer strukturierten, wissenschaftlich fundierten Herangehensweise.
+                  </p>
+                  <p className="body-text" style={{ marginBottom: 32 }}>
+                    Ich begleite Einzelpersonen und Paare dabei, Beziehungsmuster zu verstehen, Konflikte anders zu führen und wieder handlungsfähig zu werden.
+                  </p>
+                  <button className="link-arrow" onClick={() => go('ueber')}>Mehr über mich <ArrowRight /></button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── FOR WHOM / NOT FOR WHOM ── */}
+          <section className="section section-alt">
+            <div className="container">
+              <div style={{ textAlign: 'center', maxWidth: 560, margin: '0 auto 64px' }}>
+                <div className="label" style={{ marginBottom: 16 }}>Passt das zu dir?</div>
+                <h2 className="title-section">Diese Beratung ist sinnvoll, wenn du…</h2>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }} className="two-col">
+                <div style={{ background: 'var(--white)', border: '1px solid var(--navy)', padding: 48 }}>
+                  <div style={{ borderTop: '3px solid var(--navy)', paddingTop: 20, marginBottom: 28 }}>
+                    <h3 style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Geeignet für dich</h3>
+                  </div>
+                  {[
+                    'nicht mehr weiterkommst, obwohl du viel reflektierst',
+                    'merkst, dass Gespräche nicht mehr konstruktiv sind',
+                    'Klarheit willst statt endlosem Grübeln',
+                    'bereit bist, ehrlich hinzuschauen'].
+                    map((t, i) =>
+                      <div key={i} style={{ display: 'flex', gap: 14, marginBottom: 16 }}>
+                        <span style={{ color: 'rgba(27,61,82,0.5)', flexShrink: 0, marginTop: 3 }}><Check /></span>
+                        <span className="body-text" style={{ fontSize: 15 }}>{t}</span>
+                      </div>
+                    )}
+                </div>
+                <div style={{ background: 'var(--navy)', border: '1px solid var(--navy)', padding: 48 }}>
+                  <div style={{ borderTop: '4px solid rgba(255,255,255,0.2)', paddingTop: 20, marginBottom: 28 }}>
+                    <h3 style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Nicht geeignet wenn</h3>
+                  </div>
+                  {[
+                    'du eine akute psychische Krise hast (hier braucht es Therapie)',
+                    'du auf der Suche nach Sexualberatung bist',
+                    'du schnelle Lösungen ohne Auseinandersetzung suchst',
+                    'du in einer Paarberatung „recht haben" willst'].
+                    map((t, i) =>
+                      <div key={i} style={{ display: 'flex', gap: 14, marginBottom: 16 }}>
+                        <span style={{ color: 'rgba(255,255,255,0.3)', flexShrink: 0, fontSize: 16, marginTop: 2 }}>—</span>
+                        <span style={{ fontWeight: 300, fontSize: 15, lineHeight: 1.65, color: 'rgba(255,255,255,0.7)' }}>{t}</span>
+                      </div>
+                    )}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── FINAL CTA ── */}
+          <section className="section">
+            <div className="container" style={{ textAlign: 'center' }}>
+              <div className="label" style={{ marginBottom: 16 }}>Nächster Schritt</div>
+              <h2 className="title-section" style={{ maxWidth: 640, margin: '0 auto 24px' }}>Wenn du merkst, dass sich etwas verändern muss.</h2>
+              <p className="body-text" style={{ maxWidth: 480, margin: '0 auto 40px' }}>
+                Wir schauen gemeinsam, was bei dir oder euch gerade wirklich passiert – und ob ich dich dabei unterstützen kann.
+              </p>
+              <button className="btn-accent" onClick={() => go('kontakt')}>Unverbindliches Erstgespräch buchen <ArrowRight /></button>
+            </div>
+          </section>
+        </main>);
+
+    }
+
+    // ── SERVICES PAGE ────────────────────────────────────────────────────────────────
+    function LeistungenPage({ setPage }) {
+      const go = (id) => { setPage(id); window.scrollTo(0, 0); };
+      return (
+        <main style={{ paddingTop: 72 }}>
+          <section className="section-sm" style={{ background: 'var(--warm)' }}>
+            <div className="container">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
+                <div style={{ width: 3, height: 32, background: 'var(--accent)', flexShrink: 0 }} />
+                <div className="label">Angebote</div>
+              </div>
+              <h1 className="title-section" style={{ maxWidth: 640 }}>Zwei Formate.<br />Ein Ziel: Klarheit.</h1>
+            </div>
+          </section>
+
+          <section className="section">
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }} className="two-col">
+                {/* Paarberatung card */}
+                <div style={{ borderTop: '4px solid var(--navy)', borderRight: '1px solid rgba(27,61,82,0.15)', padding: '56px 48px', cursor: 'pointer' }} onClick={() => go('paarberatung')}>
+                  <div className="label" style={{ marginBottom: 16 }}>Für Paare</div>
+                  <h2 style={{ fontSize: 34, fontWeight: 700, letterSpacing: '-0.03em', marginBottom: 20 }}>Paarberatung</h2>
+                  <p className="body-text" style={{ fontSize: 15, marginBottom: 12 }}>Wenn ihr feststeckt, euch im Kreis dreht oder euch emotional verloren habt.</p>
+                  <div style={{ margin: '28px 0', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    {['Kommunikationsmuster erkennen', 'Eskalationszyklen durchbrechen', 'Emotionale Distanz überbrücken'].map((p, i) => (
+                      <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+                        <span style={{ width: 3, height: 14, background: 'var(--accent)', flexShrink: 0, display: 'inline-block' }} />
+                        <span style={{ fontSize: 14, fontWeight: 300, color: 'var(--navy)' }}>{p}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <button className="link-arrow" onClick={e => { e.stopPropagation(); go('paarberatung'); }}>Zum Ablauf <ArrowRight /></button>
+                </div>
+
+                {/* Lebensberatung card */}
+                <div style={{ borderTop: '4px solid var(--navy)', padding: '56px 48px', cursor: 'pointer' }} onClick={() => go('lebensberatung')}>
+                  <div className="label" style={{ marginBottom: 16 }}>Für Einzelpersonen</div>
+                  <h2 style={{ fontSize: 34, fontWeight: 700, letterSpacing: '-0.03em', marginBottom: 20 }}>Lebensberatung</h2>
+                  <p className="body-text" style={{ fontSize: 15, marginBottom: 12 }}>Wenn du in einer Krise steckst, vor einer Entscheidung stehst oder deine eigenen Muster verstehen willst.</p>
+                  <div style={{ margin: '28px 0', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    {['Orientierung in Lebenskrisen', 'Entscheidungen strukturiert treffen', 'Eigene Muster sichtbar machen'].map((p, i) => (
+                      <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+                        <span style={{ width: 3, height: 14, background: 'var(--accent)', flexShrink: 0, display: 'inline-block' }} />
+                        <span style={{ fontSize: 14, fontWeight: 300, color: 'var(--navy)' }}>{p}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <button className="link-arrow" onClick={e => { e.stopPropagation(); go('lebensberatung'); }}>Zum Ablauf <ArrowRight /></button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="section-sm" style={{ background: 'var(--navy)', textAlign: 'center' }}>
+            <div className="container" style={{ maxWidth: 640, margin: '0 auto' }}>
+              <p style={{ fontWeight: 300, fontSize: 15, lineHeight: 1.75, color: 'rgba(255,255,255,0.75)', marginBottom: 28 }}>
+                Mein Angebot ist Coaching und Beratung, keine Psychotherapie. Es ersetzt keine medizinische oder therapeutische Behandlung.
+              </p>
+              <button className="btn-outline-white" onClick={() => go('kontakt')}>Erstgespräch anfragen <ArrowRight /></button>
+            </div>
+          </section>
+        </main>
+      );
+    }
+
+    // ── STEP NAVIGATOR (shared component) ────────────────────────────────────────
+    function StepNavigator({ title, label, img, steps, setPage }) {
+      const [active, setActive] = React.useState(0);
+      const go = (id) => { setPage(id); window.scrollTo(0, 0); };
+      const step = steps[active];
+
+      return (
+        <main style={{ paddingTop: 72 }}>
+          {/* Header */}
+          <section className="section-sm" style={{ background: 'var(--warm)' }}>
+            <div className="container">
+              <button onClick={() => go('leistungen')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 11, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(27,61,82,0.45)', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 6, padding: 0 }}>
+                ← Alle Angebote
+              </button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+                <div style={{ width: 3, height: 32, background: 'var(--accent)', flexShrink: 0 }} />
+                <div className="label">{label}</div>
+              </div>
+              <h1 className="title-section">{title}</h1>
+            </div>
+          </section>
+
+          {/* Intro split */}
+          <section className="section">
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96 }} className="two-col">
+                <div style={{ height: 440, overflow: 'hidden' }}>
+                  <img src={img} alt={title} style={{ objectPosition: 'center 20%' }} />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <h2 style={{ fontSize: 26, fontWeight: 700, letterSpacing: '-0.03em', marginBottom: 20 }}>An wen richtet sich das?</h2>
+                  <p className="body-text" style={{ marginBottom: 20 }}>{step.whoText || steps[0].whoText}</p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 32 }}>
+                    {(steps[0].forWhom || []).map((p, i) => (
+                      <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                        <span style={{ width: 3, height: 14, background: 'var(--accent)', flexShrink: 0, marginTop: 4, display: 'inline-block' }} />
+                        <span className="body-text" style={{ fontSize: 15 }}>{p}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <button className="btn-primary" onClick={() => go('kontakt')}>Erstgespräch anfragen <ArrowRight /></button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Step Navigator */}
+          <section className="section" style={{ background: 'var(--warm)' }}>
+            <div className="container">
+              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 48 }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
+                    <div style={{ width: 3, height: 28, background: 'var(--accent)', flexShrink: 0 }} />
+                    <div className="label">Der Ablauf</div>
+                  </div>
+                  <h2 className="title-section">So läuft eine Beratung ab.</h2>
+                </div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(27,61,82,0.4)' }}>
+                  {String(active + 1).padStart(2, '0')} / {String(steps.length).padStart(2, '0')}
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '340px 1fr', gap: 48, alignItems: 'start' }} className="two-col">
+                {/* Left list */}
+                <div>
+                  {steps.map((s, i) => (
+                    <button key={i} onClick={() => setActive(i)}
+                      style={{
+                        width: '100%', background: 'none', border: 'none', cursor: 'pointer',
+                        display: 'flex', alignItems: 'center', gap: 16,
+                        padding: '18px 20px',
+                        borderLeft: active === i ? '3px solid var(--accent)' : '3px solid transparent',
+                        borderBottom: i < steps.length - 1 ? '1px solid rgba(27,61,82,0.1)' : 'none',
+                        textAlign: 'left', transition: 'all 0.2s',
+                        background: active === i ? 'rgba(27,61,82,0.04)' : 'transparent',
+                      }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.4em', color: active === i ? 'var(--accent)' : 'rgba(27,61,82,0.35)', flexShrink: 0, minWidth: 24 }}>
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: active === i ? 'var(--navy)' : 'rgba(27,61,82,0.45)' }}>
+                        {s.title}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Right card */}
+                <div style={{ background: 'var(--navy)', padding: '44px 48px', minHeight: 280 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 16 }}>
+                    Phase {String(active + 1).padStart(2, '0')}
+                  </div>
+                  <h3 style={{ fontSize: 28, fontWeight: 700, letterSpacing: '-0.03em', color: '#fff', marginBottom: 20 }}>
+                    {step.title}
+                  </h3>
+                  <p style={{ fontWeight: 300, fontSize: 16, lineHeight: 1.75, color: 'rgba(255,255,255,0.8)', marginBottom: 24 }}>
+                    {step.desc}
+                  </p>
+                  {step.tag && (
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                      <span style={{ width: 3, height: 12, background: 'var(--accent)', display: 'inline-block' }} />
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--accent)' }}>{step.tag}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Format */}
+          <section className="section">
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }} className="two-col">
+                <div style={{ padding: '0 64px 0 0', borderRight: '1px solid rgba(27,61,82,0.12)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
+                    <div style={{ width: 3, height: 24, background: 'var(--accent)', flexShrink: 0 }} />
+                    <div className="label">Format & Setting</div>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                    {steps[0].format.map((f, i) => (
+                      <div key={i} style={{ display: 'flex', gap: 12, paddingBottom: 16, borderBottom: i < steps[0].format.length - 1 ? '1px solid rgba(27,61,82,0.08)' : 'none' }}>
+                        <span style={{ width: 3, height: 14, background: 'rgba(27,61,82,0.25)', flexShrink: 0, marginTop: 4, display: 'inline-block' }} />
+                        <span className="body-text" style={{ fontSize: 15 }}>{f}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ padding: '0 0 0 64px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
+                    <div style={{ width: 3, height: 24, background: 'var(--accent)', flexShrink: 0 }} />
+                    <div className="label">Nächster Schritt</div>
+                  </div>
+                  <h3 style={{ fontSize: 24, fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 16 }}>Bereit für den ersten Schritt?</h3>
+                  <p className="body-text" style={{ marginBottom: 28 }}>Das Erstgespräch dauert ca. 30 Minuten, ist kostenlos und unverbindlich. Wir schauen gemeinsam, ob und wie ich dich unterstützen kann.</p>
+                  <button className="btn-primary" onClick={() => go('kontakt')}>Erstgespräch anfragen <ArrowRight /></button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      );
+    }
+
+    // ── PAARBERATUNG PAGE ─────────────────────────────────────────────────────────
+    function PaarberatungPage({ setPage }) {
+      const steps = [
+        {
+          title: 'Erstgespräch',
+          desc: 'Wir lernen uns kennen. Ich höre zu, stelle Fragen und verschaffe mir ein Bild eurer Situation. Ohne Bewertung, ohne Druck. Es geht darum, zu verstehen, was bei euch gerade passiert.',
+          tag: 'Kostenlos & unverbindlich',
+          whoText: 'Paarberatung richtet sich an Paare, die in wiederkehrende Konflikte geraten, das Gefühl der Verbindung verloren haben oder vor einer wichtigen gemeinsamen Entscheidung stehen.',
+          forWhom: ['Wiederkehrende Konflikte ohne Lösung', 'Emotionale Distanz oder Entfremdung', 'Kommunikation, die immer wieder eskaliert', 'Unsicherheit über die Zukunft der Beziehung'],
+          format: ['Online via Video – deutschlandweit', 'Vor Ort in Garmisch-Partenkirchen', 'Einzelsitzungen (60–90 Min.) oder Begleitpaket', 'Auch als Intensiv-Session buchbar'],
+        },
+        {
+          title: 'Analyse',
+          desc: 'Gemeinsam machen wir sichtbar, was unter der Oberfläche passiert. Welche Dynamiken wiederholen sich? Was löst was aus? Hier entsteht oft das erste echte Verstehen.',
+          tag: 'Wissenschaftlich fundiert',
+        },
+        {
+          title: 'Arbeit',
+          desc: 'Jetzt arbeiten wir konkret. Mit gezielten Interventionen, strukturierten Gesprächen und praktischen Übungen verändern wir die Muster, die euch bisher blockiert haben.',
+          tag: 'Praxisorientiert',
+        },
+        {
+          title: 'Integration',
+          desc: 'Was in den Sitzungen entsteht, muss im Alltag verankert werden. Wir entwickeln gemeinsam Wege, wie ihr das Erarbeitete in eurem echten Leben umsetzen könnt.',
+          tag: 'Nachhaltig',
+        },
+        {
+          title: 'Abschluss',
+          desc: 'Wir ziehen Bilanz. Was hat sich verändert? Was nehmt ihr mit? Und was sind eure nächsten Schritte – ob gemeinsam oder getrennt?',
+          tag: 'Klar & zukunftsorientiert',
+        },
+      ];
+      return <StepNavigator title="Paarberatung" label="Für Paare" img="uploads/WhatsApp Image 2026-04-16 at 10.19.16.jpeg" steps={steps} setPage={setPage} />;
+    }
+
+    // ── LEBENSBERATUNG PAGE ───────────────────────────────────────────────────────
+    function LebensberatungPage({ setPage }) {
+      const steps = [
+        {
+          title: 'Erstgespräch',
+          desc: 'Wir lernen uns kennen. Ich höre zu und stelle Fragen, um zu verstehen, wo du gerade stehst und was dich bewegt. Kostenlos, offen und ohne Verpflichtung.',
+          tag: 'Kostenlos & unverbindlich',
+          whoText: 'Lebensberatung richtet sich an Menschen in persönlichen Orientierungsphasen: nach Trennungen, bei beruflichen Wendepunkten, Sinnfragen oder wenn das eigene Verhalten in Beziehungen immer wieder ähnliche Ergebnisse produziert.',
+          forWhom: ['Orientierungslosigkeit oder innere Leere', 'Wiederkehrende Beziehungsmuster', 'Wichtige Entscheidungen ohne Klarheit', 'Persönliche Krisen und Wendepunkte'],
+          format: ['Online via Video – deutschlandweit', 'Vor Ort in Garmisch-Partenkirchen', 'Einzelsitzungen ab 60 Minuten', 'Prozessbegleitung über mehrere Sitzungen'],
+        },
+        {
+          title: 'Orientierung',
+          desc: 'Wir benennen, was wirklich auf dem Spiel steht. Was ist das eigentliche Thema? Oft ist das nicht das, was zuerst genannt wird. Dieser Schritt schafft Klarheit über den Kern.',
+          tag: 'Fokussiert',
+        },
+        {
+          title: 'Muster',
+          desc: 'Wir schauen auf Muster: Wie reagierst du in bestimmten Situationen? Was löst das aus? Wo kommen diese Reaktionen her? Verstehen schafft Spielraum.',
+          tag: 'Tiefgreifend',
+        },
+        {
+          title: 'Ressourcen',
+          desc: 'Wir aktivieren, was bereits in dir steckt. Eigene Stärken, vergessene Fähigkeiten, neue Perspektiven. Hier entsteht Handlungsfähigkeit.',
+          tag: 'Stärkend',
+        },
+        {
+          title: 'Umsetzung',
+          desc: 'Du gehst mit einem klaren Plan heraus – und ich begleite dich dabei, wenn nötig. Was ist dein nächster konkreter Schritt?',
+          tag: 'Klar & konkret',
+        },
+      ];
+      return <StepNavigator title="Lebensberatung" label="Für Einzelpersonen" img="uploads/WhatsApp Image 2026-04-16 at 10.22.35.jpeg" steps={steps} setPage={setPage} />;
+    }
+
+    // ── ABOUT PAGE ───────────────────────────────────────────────────────────────
+    function UeberPage({ setPage }) {
+      const go = (id) => { setPage(id); window.scrollTo(0, 0); };
+      const credentials = [
+        'Gesundheitswissenschaftlerin M.Sc. (Schwerpunkt Verhaltenspsychologie)',
+        'Systemischer Coach (zertifiziert)',
+        'Über 10 Jahre Beratungspraxis',
+        'Regelmäßige psychologische Supervision',
+        'Seminartätigkeit u.a. beim Polizeipräsidium Pforzheim'];
+
+      return (
+        <main style={{ paddingTop: 72 }}>
+          {/* Header */}
+          <section className="section-sm" style={{ background: 'var(--warm)' }}>
+            <div className="container">
+              <div className="label" style={{ marginBottom: 16 }}>Über mich</div>
+              <h1 className="title-section" style={{ maxWidth: 700 }}>Menschen auf ihrem Weg begleiten – mit Haltung und Methode.</h1>
+            </div>
+          </section>
+
+          {/* Main bio */}
+          <section className="section">
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }} className="two-col">
+                <div>
+                  <div style={{ position: 'relative', marginBottom: 40 }}>
+                    <div style={{ height: 560, overflow: 'hidden' }}>
+                      <img src="uploads/DSC_8957.JPG" alt="Kim Haas" style={{ objectPosition: 'center top' }} />
+                    </div>
+                    <div style={{ position: 'absolute', bottom: -20, left: -20, background: 'var(--accent)', padding: '16px 24px' }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--navy)' }}>Kim Haas</div>
+                    </div>
+                  </div>
+                  <div style={{ height: 320, overflow: 'hidden' }}>
+                    <img src="uploads/WhatsApp Image 2026-04-16 at 10.16.38.jpeg" alt="Seminarvortrag" style={{ objectPosition: 'center' }} />
+                  </div>
+                  <p style={{ fontSize: 12, color: 'rgba(27,61,82,0.5)', marginTop: 8, fontStyle: 'italic' }}>Seminarvortrag beim Polizeipräsidium Pforzheim</p>
+                </div>
+                <div>
+                  <div className="accent-bar" />
+                  <h2 style={{ fontSize: 28, fontWeight: 700, letterSpacing: '-0.03em', marginBottom: 24 }}>Ich weiß aus eigener Erfahrung: Beziehungen kann man lernen.</h2>
+                  <p className="body-text" style={{ marginBottom: 20 }}>
+                    Als ehemaliges Straßenkind habe ich Beziehungen selbst von der Pieke auf erlernen müssen. Mit schwerst belasteten Familien-Dynamiken und destruktiven Beziehungen im Gepäck habe ich einen langen Weg zurückgelegt.
+                  </p>
+                  <p className="body-text" style={{ marginBottom: 20 }}>
+                    Die größten Aha-Momente meines Lebens hatte ich mit der Erkenntnis, dass man Beziehungen als Handwerk erlernen kann. Und in diese Erfahrungen nehme ich euch mit.
+                  </p>
+                  <p className="body-text" style={{ marginBottom: 32 }}>
+                    Ich darf seit über zehn Jahren Klient:innen in verschiedenen Settings beraten. Menschen bringen ihre Schicksale mit, wünschen sich Strategien für ein gesünderes Leben oder kämpfen um ihre große Liebe. Das ist eine große Verantwortung. Deshalb arbeite ich ausschließlich mit wissenschaftlich validierten Methoden und besuche regelmäßig die psychologische Supervision.
+                  </p>
+
+                  <div className="label" style={{ marginBottom: 16 }}>Qualifikationen & Hintergrund</div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 40 }}>
+                    {credentials.map((c, i) =>
+                      <div key={i} style={{ display: 'flex', gap: 14, paddingBottom: 12, borderBottom: i < credentials.length - 1 ? '1px solid rgba(27,61,82,0.1)' : 'none' }}>
+                        <span style={{ color: 'rgba(27,61,82,0.45)', flexShrink: 0, marginTop: 3 }}><Check /></span>
+                        <span className="body-text" style={{ fontSize: 15 }}>{c}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <div style={{ background: 'var(--warm)', padding: 32, borderLeft: '4px solid var(--accent)' }}>
+                    <p style={{ fontWeight: 300, fontSize: 15, lineHeight: 1.75, fontStyle: 'italic', marginBottom: 8 }}>
+                      „Beratung bedeutet in allererster Linie ein vertrauensvoller Raum. Hier darfst du erstmal alles mitbringen, wo du dir Gehör wünschst, ohne verurteilt zu werden."
+                    </p>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)' }}>Kim Haas</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Method */}
+          <section className="section section-dark">
+            <div className="container">
+              <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 64px' }}>
+                <div className="label" style={{ marginBottom: 16 }}>Methodik</div>
+                <h2 className="title-section" style={{ color: '#fff' }}>Die drei Säulen meiner Arbeit.</h2>
+              </div>
+              <div className="three-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 0 }}>
+                {[
+                  { num: '01', title: 'Wissenschaftliches Fundament', text: 'Validierte Ansätze aus Verhaltenspsychologie, Systemischer Therapie und Bindungsforschung bilden die Grundlage jeder Sitzung.' },
+                  { num: '02', title: 'Praxiserfahrung', text: 'Über zehn Jahre Beratungspraxis in unterschiedlichsten Settings – von Paaren bis hin zu Führungskräften und Institutionen.' },
+                  { num: '03', title: 'Persönliche Tiefe', text: 'Als jemand, der Beziehungen selbst von Grund auf erlernen musste, bringe ich eine Authentizität mit, die über Theorie hinausgeht.' }].
+                  map((p, i) =>
+                    <div key={i} className="service-card-dark" style={{ borderTop: '1px solid rgba(255,255,255,0.15)', borderRight: i < 2 ? '1px solid rgba(255,255,255,0.1)' : 'none', padding: '40px 36px' }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.4em', color: 'rgba(255,255,255,0.3)', marginBottom: 12 }}>{p.num}</div>
+                      <h3 style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 16, color: '#fff' }}>{p.title}</h3>
+                      <p style={{ fontWeight: 300, fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.75)' }}>{p.text}</p>
+                    </div>
+                  )}
+              </div>
+            </div>
+          </section>
+
+          {/* Gallery */}
+          <section className="section">
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }} className="three-col">
+                <div style={{ height: 300, overflow: 'hidden' }}>
+                  <img src="uploads/WhatsApp Image 2026-04-16 at 10.11.59.jpeg" alt="Gruppenarbeit" style={{ objectPosition: 'center' }} />
+                </div>
+                <div style={{ height: 300, overflow: 'hidden' }}>
+                  <img src="uploads/DSC_8576.JPG" alt="Kim Haas" style={{ objectPosition: 'center top' }} />
+                </div>
+                <div style={{ height: 300, overflow: 'hidden' }}>
+                  <img src="uploads/WhatsApp Image 2026-04-16 at 10.22.35.jpeg" alt="Podcast" style={{ objectPosition: 'center' }} />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="section-sm" style={{ background: 'var(--warm)', textAlign: 'center' }}>
+            <div className="container">
+              <p className="body-text" style={{ maxWidth: 480, margin: '0 auto 32px' }}>Lern mich unverbindlich kennen. Im Erstgespräch schauen wir gemeinsam, ob und wie ich dir helfen kann.</p>
+              <button className="btn-primary" onClick={() => go('kontakt')}>Erstgespräch anfragen <ArrowRight /></button>
+            </div>
+          </section>
+        </main>);
+
+    }
+
+    // ── FAQ PAGE ─────────────────────────────────────────────────────────────────
+    function FAQPage({ setPage }) {
+      const go = (id) => { setPage(id); window.scrollTo(0, 0); };
+      const [open, setOpen] = useState(null);
+
+      const faqs = [
+        { q: 'Was ist der Unterschied zwischen Beratung und Therapie?', a: 'Coaching und Beratung arbeiten mit Menschen, die grundsätzlich psychisch gesund sind und an konkreten Situationen, Mustern oder Entscheidungen arbeiten möchten. Psychotherapie behandelt psychische Erkrankungen und setzt eine ärztliche Diagnose voraus. Mein Angebot ersetzt keine Therapie.' },
+        { q: 'Wie läuft ein Erstgespräch ab?', a: 'Das Erstgespräch dauert ca. 30 Minuten und ist unverbindlich und kostenlos. Wir schauen gemeinsam, was bei dir oder euch gerade wirklich passiert – und ob und wie ich dich dabei unterstützen kann. Danach entscheidest du, ob wir weitermachen.' },
+        { q: 'Muss mein Partner / meine Partnerin dabei sein?', a: 'Nein. Paarberatung ist am wirkungsvollsten, wenn beide teilnehmen – aber ich arbeite auch mit Einzelpersonen, die an ihrer Beziehungssituation arbeiten möchten. Manchmal ist der erste Schritt allein der richtige.' },
+        { q: 'Wie viele Sitzungen brauche ich?', a: 'Das ist sehr individuell. Manche Menschen erleben schon nach zwei bis drei Sitzungen einen deutlichen Wendepunkt. Andere brauchen eine längere Begleitung. Wir besprechen das offen und passen den Prozess an deine Situation an.' },
+        { q: 'Kann ich online beraten werden, wenn ich nicht in Garmisch-Partenkirchen wohne?', a: 'Ja. Ich berate deutschlandweit online per Video. Die meisten Klient:innen schätzen das sogar, weil es im vertrauten Umfeld stattfindet und flexibel in den Alltag passt.' },
+        { q: 'Ist alles vertraulich?', a: 'Selbstverständlich. Alles, was in unseren Gesprächen besprochen wird, bleibt vertraulich. Ich unterliege der Schweigepflicht und arbeite im Rahmen professioneller ethischer Standards.' },
+        { q: 'Was kostet eine Sitzung?', a: 'Aktuelle Preise teile ich gerne im Erstgespräch mit, da sie je nach Format und Setting variieren können. Grundsätzlich arbeite ich mit transparenten Honoraren und ohne versteckte Kosten.' },
+        { q: 'Was, wenn ich akute psychische Probleme habe?', a: 'Dann verweise ich dich an geeignete Fachkräfte – Psychotherapeuten, Psychiater oder Krisentelefone. Mein Angebot ist nicht für akute psychische Krisen geeignet. In solchen Situationen ist schnelle und professionelle Hilfe wichtig.' },
+        { q: 'Was unterscheidet deine Arbeit von anderen Coaches?', a: 'Ich arbeite nicht mit Standard-Coaching-Methoden oder allgemeinen Kommunikationstipps. Mein Fokus liegt auf Beziehungsmustern, emotionalen Dynamiken und unbewussten Reaktionen – das, was zwischen den Zeilen passiert. Dazu bringe ich sowohl wissenschaftliches Fundament als auch eine sehr persönliche Perspektive mit.' }];
+
+
+      return (
+        <main style={{ paddingTop: 72 }}>
+          <section className="section-sm" style={{ background: 'var(--warm)' }}>
+            <div className="container">
+              <div className="label" style={{ marginBottom: 16 }}>Häufige Fragen</div>
+              <h1 className="title-section" style={{ maxWidth: 640 }}>Was Menschen vor dem ersten Schritt bewegt.</h1>
+            </div>
+          </section>
+
+          <section className="section">
+            <div className="container" style={{ maxWidth: 800 }}>
+              {faqs.map((f, i) =>
+                <div key={i} className="faq-item">
+                  <button className="faq-question" onClick={() => setOpen(open === i ? null : i)}>
+                    <span>{f.q}</span>
+                    <span style={{ color: 'var(--accent)', flexShrink: 0, marginLeft: 16 }}>{open === i ? <ChevronUp /> : <ChevronDown />}</span>
+                  </button>
+                  <div className="faq-answer" style={{ maxHeight: open === i ? 400 : 0, paddingBottom: open === i ? 24 : 0 }}>
+                    {f.a}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+
+          <section className="section-sm" style={{ background: 'var(--navy)', textAlign: 'center' }}>
+            <div className="container">
+              <div className="label" style={{ marginBottom: 16, color: 'var(--accent)' }}>Noch Fragen?</div>
+              <h2 className="title-section" style={{ color: '#fff', marginBottom: 24 }}>Einfach fragen.</h2>
+              <p style={{ fontWeight: 300, fontSize: 16, color: 'rgba(255,255,255,0.8)', maxWidth: 440, margin: '0 auto 36px' }}>Im Erstgespräch kannst du alle deine Fragen mitbringen – kostenlos und unverbindlich.</p>
+              <button className="btn-accent" onClick={() => go('kontakt')}>Erstgespräch anfragen <ArrowRight /></button>
+            </div>
+          </section>
+        </main>);
+
+    }
+
+    // ── CONTACT PAGE ─────────────────────────────────────────────────────────────
+    function KontaktPage() {
+      const [form, setForm] = useState({ name: '', email: '', phone: '', anliegen: 'paarberatung', nachricht: '', datenschutz: false });
+      const [sent, setSent] = useState(false);
+      const [errors, setErrors] = useState({});
+
+      const set = (k, v) => setForm((prev) => ({ ...prev, [k]: v }));
+
+      const validate = () => {
+        const e = {};
+        if (!form.name.trim()) e.name = 'Bitte Namen angeben';
+        if (!form.email.includes('@')) e.email = 'Bitte gültige E-Mail angeben';
+        if (!form.nachricht.trim()) e.nachricht = 'Bitte kurz beschreiben, worum es geht';
+        if (!form.datenschutz) e.datenschutz = 'Bitte Datenschutz bestätigen';
+        setErrors(e);
+        return Object.keys(e).length === 0;
+      };
+
+      const submit = (e) => {
+        e.preventDefault();
+        if (validate()) setSent(true);
+      };
+
+      return (
+        <main style={{ paddingTop: 72 }}>
+          <section className="section-sm" style={{ background: 'var(--warm)' }}>
+            <div className="container">
+              <div className="label" style={{ marginBottom: 16 }}>Kontakt</div>
+              <h1 className="title-section" style={{ maxWidth: 600 }}>Erstgespräch anfragen.</h1>
+            </div>
+          </section>
+
+          <section className="section">
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }} className="two-col">
+                {/* Left info */}
+                <div>
+                  <div className="accent-bar" />
+                  <h2 style={{ fontSize: 26, fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 16 }}>Unverbindlich kennenlernen.</h2>
+                  <p className="body-text" style={{ marginBottom: 36 }}>
+                    Das Erstgespräch dauert ca. 30 Minuten, ist kostenlos und findet online statt. Wir schauen gemeinsam, ob und wie ich dich unterstützen kann – ohne Druck und ohne Verpflichtung.
+                  </p>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 48 }}>
+                    <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                      <span style={{ color: 'var(--accent)', marginTop: 2 }}><Mail /></span>
+                      <div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 4 }}>E-Mail</div>
+                        <div className="body-text">info@paarberatung-haas.de</div>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                      <span style={{ color: 'var(--accent)', marginTop: 2 }}><Phone /></span>
+                      <div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 4 }}>Telefon</div>
+                        <div className="body-text">+49 172 3148057</div>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                      <span style={{ color: 'var(--accent)', marginTop: 2 }}><MapPin /></span>
+                      <div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 4 }}>Standort</div>
+                        <div className="body-text">Pforzheim, Baden-Württemberg<br /><span style={{ fontSize: 13, opacity: 0.7 }}>Online: deutschlandweit</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ height: 340, overflow: 'hidden' }}>
+                    <img src="uploads/DSC_8576.JPG" alt="Kim Haas" style={{ objectPosition: 'center 30%' }} />
+                  </div>
+                </div>
+
+                {/* Right form */}
+                {!sent ?
+                  <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                      <div className="form-group">
+                        <label className="form-label">Name *</label>
+                        <input className="form-input" value={form.name} onChange={(e) => set('name', e.target.value)} placeholder="Dein Name" />
+                        {errors.name && <span style={{ fontSize: 12, color: '#c0392b' }}>{errors.name}</span>}
+                      </div>
+                      <div className="form-group">
+                        <label className="form-label">E-Mail *</label>
+                        <input className="form-input" type="email" value={form.email} onChange={(e) => set('email', e.target.value)} placeholder="deine@email.de" />
+                        {errors.email && <span style={{ fontSize: 12, color: '#c0392b' }}>{errors.email}</span>}
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label">Telefon (optional)</label>
+                      <input className="form-input" value={form.phone} onChange={(e) => set('phone', e.target.value)} placeholder="+49 ..." />
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label">Mein Anliegen</label>
+                      <select className="form-select" value={form.anliegen} onChange={(e) => set('anliegen', e.target.value)}>
+                        <option value="paarberatung">Paarberatung</option>
+                        <option value="beziehungscoaching">Beziehungscoaching</option>
+                        <option value="lebensberatung">Lebensberatung</option>
+                        <option value="unsicher">Noch unsicher</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label">Kurze Beschreibung *</label>
+                      <textarea className="form-textarea" value={form.nachricht} onChange={(e) => set('nachricht', e.target.value)} placeholder="Was bewegt dich gerade? Keine langen Ausführungen nötig – ein paar Sätze reichen." />
+                      {errors.nachricht && <span style={{ fontSize: 12, color: '#c0392b' }}>{errors.nachricht}</span>}
+                    </div>
+                    <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                      <input type="checkbox" id="datenschutz" checked={form.datenschutz} onChange={(e) => set('datenschutz', e.target.checked)} style={{ marginTop: 4, accentColor: 'var(--accent)' }} />
+                      <label htmlFor="datenschutz" style={{ fontSize: 13, fontWeight: 300, lineHeight: 1.6, cursor: 'pointer' }}>
+                        Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Daten für die Kontaktaufnahme zu. *
+                      </label>
+                    </div>
+                    {errors.datenschutz && <span style={{ fontSize: 12, color: '#c0392b' }}>{errors.datenschutz}</span>}
+                    <button type="submit" className="btn-accent" style={{ alignSelf: 'flex-start', marginTop: 8 }}>
+                      Anfrage senden <ArrowRight />
+                    </button>
+                    <p style={{ fontSize: 12, color: 'rgba(27,61,82,0.5)', lineHeight: 1.5 }}>
+                      Ich melde mich in der Regel innerhalb von 48 Stunden. Alle Daten werden vertraulich behandelt.
+                    </p>
+                  </form> :
+
+                  <div style={{ background: 'var(--warm)', padding: 48, borderLeft: '4px solid var(--accent)' }}>
+                    <div style={{ fontSize: 32, marginBottom: 16 }}>✓</div>
+                    <h3 style={{ fontSize: 22, fontWeight: 700, marginBottom: 12 }}>Anfrage eingegangen.</h3>
+                    <p className="body-text">Vielen Dank, {form.name}. Ich melde mich innerhalb von 48 Stunden bei dir.</p>
+                  </div>
+                }
+              </div>
+            </div>
+          </section>
+        </main>);
+
+    }
+
+    // ── FOOTER ────────────────────────────────────────────────────────────────────
+    function Footer({ setPage }) {
+      const go = (id) => { setPage(id); window.scrollTo(0, 0); };
+      return (
+        <footer style={{ background: 'var(--navy)', paddingTop: 64, paddingBottom: 32 }}>
+          <div className="container">
+            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 48, marginBottom: 48 }} className="three-col">
+              <div>
+                <div style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#fff', marginBottom: 16 }}>
+                  Haas<span style={{ color: 'var(--accent)' }}>.</span>Beratung
+                </div>
+                <p style={{ fontWeight: 300, fontSize: 14, lineHeight: 1.75, color: 'rgba(255,255,255,0.6)', maxWidth: 320 }}>
+                  Online Paarberatung, Beziehungscoaching & Lebensberatung. Wertschätzend. Direkt. Strukturiert. Deutschlandweit.
+                </p>
+              </div>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 16 }}>Navigation</div>
+                {[['home', 'Start'], ['leistungen', 'Leistungen'], ['ueber', 'Über mich'], ['faq', 'FAQ'], ['kontakt', 'Kontakt']].map(([id, label]) =>
+                  <button key={id} onClick={() => go(id)} style={{ display: 'block', fontWeight: 300, fontSize: 14, color: 'rgba(255,255,255,0.6)', background: 'none', border: 'none', cursor: 'pointer', marginBottom: 8, padding: 0, textAlign: 'left', transition: 'color 0.2s' }}
+                    onMouseEnter={(e) => e.target.style.color = 'rgba(255,255,255,0.9)'}
+                    onMouseLeave={(e) => e.target.style.color = 'rgba(255,255,255,0.6)'}>
+                    {label}</button>
+                )}
+              </div>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 16 }}>Kontakt</div>
+                <div style={{ fontWeight: 300, fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.9 }}>
+                  <div>info@paarberatung-haas.de</div>
+                  <div>+49 172 3148057</div>
+                  <div>Garmisch-Partenkirchen, Bayern</div>
+                </div>
+              </div>
+            </div>
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+              <div style={{ fontSize: 12, fontWeight: 300, color: 'rgba(255,255,255,0.4)' }}>© 2026 Kim Haas. Alle Rechte vorbehalten.</div>
+              <div style={{ fontSize: 12, fontWeight: 300, color: 'rgba(255,255,255,0.4)' }}>Impressum · Datenschutz</div>
+            </div>
+          </div>
+        </footer>);
+
+    }
+
+    // ── TWEAKS PANEL ─────────────────────────────────────────────────────────────
+    function TweaksPanel({ tweaks, setTweaks }) {
+      return (
+        <div className="tweaks-panel">
+          <div className="tweaks-title">Tweaks</div>
+          <div className="tweak-row">
+            <span className="tweak-label">Akzentfarbe</span>
+            <input type="color" value={tweaks.accentColor} onChange={(e) => {
+              const v = e.target.value;
+              setTweaks((t) => ({ ...t, accentColor: v }));
+              document.documentElement.style.setProperty('--accent', v);
+              window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accentColor: v } }, '*');
+            }} />
+          </div>
+          <div className="tweak-row">
+            <span className="tweak-label">Hero-Layout</span>
+            <select className="tweak-select" value={tweaks.heroLayout} onChange={(e) => {
+              setTweaks((t) => ({ ...t, heroLayout: e.target.value }));
+              window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { heroLayout: e.target.value } }, '*');
+            }}>
+              <option value="split">Split (Bild rechts)</option>
+              <option value="center">Zentriert</option>
+            </select>
+          </div>
+          <div className="tweak-row">
+            <span className="tweak-label">Nav-Stil</span>
+            <select className="tweak-select" value={tweaks.navStyle} onChange={(e) => {
+              const v = e.target.value;
+              setTweaks((t) => ({ ...t, navStyle: v }));
+              window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { navStyle: v } }, '*');
+            }}>
+              <option value="light">Hell</option>
+              <option value="dark">Dunkel</option>
+            </select>
+          </div>
+        </div>);
+
+    }
+
+    // ── APP ───────────────────────────────────────────────────────────────────────
+    function App() {
+      const savedPage = localStorage.getItem('haas_page') || 'home';
+      const [page, setPageState] = useState(savedPage);
+      const [tweaks, setTweaks] = useState(TWEAK_DEFAULTS);
+      const [showTweaks, setShowTweaks] = useState(false);
+
+      const setPage = (id) => {
+        setPageState(id);
+        localStorage.setItem('haas_page', id);
+      };
+
+      // Apply tweaks on mount
+      useEffect(() => {
+        document.documentElement.style.setProperty('--accent', tweaks.accentColor);
+      }, []);
+
+      // Nav style tweak
+      useEffect(() => {
+        if (tweaks.navStyle === 'dark') {
+          document.documentElement.style.setProperty('--nav-bg', 'var(--navy)');
+        }
+      }, [tweaks.navStyle]);
+
+      // Tweaks protocol
+      useEffect(() => {
+        const handler = (e) => {
+          if (e.data?.type === '__activate_edit_mode') setShowTweaks(true);
+          if (e.data?.type === '__deactivate_edit_mode') setShowTweaks(false);
+        };
+        window.addEventListener('message', handler);
+        window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+        return () => window.removeEventListener('message', handler);
+      }, []);
+
+      return (
+        <>
+          <Nav page={page} setPage={setPage} />
+          {page === 'home' && <HomePage setPage={setPage} />}
+          {page === 'leistungen' && <LeistungenPage setPage={setPage} />}
+          {page === 'paarberatung' && <PaarberatungPage setPage={setPage} />}
+          {page === 'lebensberatung' && <LebensberatungPage setPage={setPage} />}
+          {page === 'ueber' && <UeberPage setPage={setPage} />}
+          {page === 'faq' && <FAQPage setPage={setPage} />}
+          {page === 'kontakt' && <KontaktPage />}
+          <Footer setPage={setPage} />
+          {showTweaks && <TweaksPanel tweaks={tweaks} setTweaks={setTweaks} />}
+        </>);
+
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+      <rect width="120" height="80" fill="#1b3d52" />
+      <rect x="20" y="20" width="40" height="40" fill="#D98C2B" opacity="0.3" />
+      <text x="60" y="46" font-size="18" font-weight="bold" fill="white" text-anchor="middle"
+        font-family="sans-serif">H</text>
+    </svg>
+  </template>
+</body>
+
+</html>
