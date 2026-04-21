@@ -102,7 +102,7 @@ export default function UeberPage() {
               <div className="img-shadow" style={{ height: 320, position: 'relative' }}>
                 <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
                   <Image
-                    src="/uploads/WhatsApp Image 2026-04-16 at 10.16.38.jpeg"
+                    src="/uploads/whatsapp-10.16.38.jpeg"
                     alt="Seminarvortrag beim Polizeipräsidium Pforzheim"
                     fill
                     style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -174,9 +174,9 @@ export default function UeberPage() {
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }} className="three-col">
             {[
-              { src: '/uploads/WhatsApp Image 2026-04-16 at 10.11.59.jpeg', alt: 'Gruppenarbeit' },
+              { src: '/uploads/whatsapp-10.11.59.jpeg', alt: 'Gruppenarbeit' },
               { src: '/uploads/DSC_8576.JPG', alt: 'Kim Haas' },
-              { src: '/uploads/WhatsApp Image 2026-04-16 at 10.22.35.jpeg', alt: 'Podcast' },
+              { src: '/uploads/whatsapp-10.22.35.jpeg', alt: 'Podcast' },
             ].map((img, i) => (
               <div key={i} className="img-shadow" style={{ height: 300, position: 'relative' }}>
                 <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>

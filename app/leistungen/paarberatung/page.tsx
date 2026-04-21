@@ -77,7 +77,7 @@ export default function PaarberatungPage() {
             <div className="img-shadow" style={{ height: 440, position: 'relative' }}>
               <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
                 <Image
-                  src="/uploads/WhatsApp Image 2026-04-16 at 10.19.16.jpeg"
+                  src="/uploads/whatsapp-10.19.16.jpeg"
                   alt="Paarberatung"
                   fill
                   style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
