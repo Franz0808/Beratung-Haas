@@ -3,8 +3,10 @@ import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   output: 'export',
   basePath: '/Beratung-Haas',
+  assetPrefix: '/Beratung-Haas',
   images: {
-    unoptimized: true,
+    loader: 'custom',
+    loaderFile: './imageLoader.ts',
   },
   webpack: (config, { dev }) => {
     if (dev) {
