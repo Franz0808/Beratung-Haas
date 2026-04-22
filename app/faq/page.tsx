@@ -22,11 +22,11 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <section className="section-sm" style={{ background: 'var(--navy)', textAlign: 'center' }}>
+      <section className="section-sm" style={{ background: 'var(--warm)', textAlign: 'center' }}>
         <div className="container">
-          <div className="label" style={{ marginBottom: 16, color: 'var(--accent)' }}>Noch Fragen?</div>
-          <h2 className="title-section" style={{ color: '#fff', marginBottom: 24 }}>Einfach fragen.</h2>
-          <p style={{ fontWeight: 300, fontSize: 16, color: 'rgba(255,255,255,0.8)', maxWidth: 440, margin: '0 auto 36px' }}>Im Erstgespräch kannst du alle deine Fragen mitbringen – kostenlos und unverbindlich.</p>
+          <div className="label" style={{ marginBottom: 16 }}>Noch Fragen?</div>
+          <h2 className="title-section" style={{ marginBottom: 24 }}>Einfach fragen.</h2>
+          <p style={{ fontWeight: 300, fontSize: 16, color: 'var(--mid)', maxWidth: 440, margin: '0 auto 36px' }}>Im Erstgespräch kannst du alle deine Fragen mitbringen – kostenlos und unverbindlich.</p>
           <Link href="/kontakt" className="btn-accent">Erstgespräch anfragen <ArrowRight /></Link>
         </div>
       </section>

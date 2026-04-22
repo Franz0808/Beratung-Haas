@@ -51,8 +51,8 @@ export default function KontaktPage() {
                   <div>
                     <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 4 }}>Standort</div>
                     <div className="body-text">
-                      Pforzheim, Baden-Württemberg<br />
-                      <span style={{ fontSize: 13, opacity: 0.7 }}>Online: deutschlandweit</span>
+                      Garmisch-Partenkirchen, Bayern<br />
+                      <span style={{ opacity: 0.7 }}>Online: deutschlandweit</span>
                     </div>
                   </div>
                 </div>
@@ -83,7 +83,7 @@ export default function KontaktPage() {
               <a href="mailto:info@paarberatung-haas.de?subject=Erstgespräch anfragen" className="btn-accent" style={{ marginBottom: 16 }}>
                 E-Mail schreiben <ArrowRight />
               </a>
-              <p style={{ fontSize: 12, color: 'rgba(27,61,82,0.5)', lineHeight: 1.5, marginTop: 16 }}>
+              <p style={{ fontSize: 'clamp(15px, 1.1vw, 18px)', color: 'rgba(27,61,82,0.5)', lineHeight: 1.5, marginTop: 16 }}>
                 Das Erstgespräch ist kostenlos und unverbindlich. Alle Informationen werden vertraulich behandelt.
               </p>
             </div>

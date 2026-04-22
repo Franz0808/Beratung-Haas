@@ -20,7 +20,7 @@ export default function Footer() {
               Haas<span style={{ color: 'var(--accent)' }}>.</span>Beratung
             </div>
             <p style={{ fontWeight: 300, fontSize: 14, lineHeight: 1.75, color: 'rgba(255,255,255,0.6)', maxWidth: 320 }}>
-              Online Paarberatung, Beziehungscoaching & Lebensberatung. Wertschätzend. Direkt. Strukturiert. Deutschlandweit.
+              Online Paarberatung, Beziehungscoaching & Einzelberatung. Wertschätzend. Direkt. Strukturiert. Deutschlandweit.
             </p>
           </div>
           <div>

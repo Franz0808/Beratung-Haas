@@ -19,7 +19,7 @@ npm run start     # Produktions-Server lokal starten
 - `/ueber` → About (`app/ueber/page.tsx`)
 - `/leistungen` → Services Übersicht (`app/leistungen/page.tsx`)
 - `/leistungen/paarberatung` → Service-Detail Paarberatung
-- `/leistungen/lebensberatung` → Service-Detail Lebensberatung
+- `/leistungen/Einzelberatung` → Service-Detail Einzelberatung
 - `/faq` → FAQ (`app/faq/page.tsx`)
 - `/kontakt` → Kontakt (`app/kontakt/page.tsx`)
 

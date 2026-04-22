@@ -15,7 +15,7 @@ const links = [
 
 const leistungenSublinks = [
   { href: '/leistungen/paarberatung', label: 'Paarberatung' },
-  { href: '/leistungen/lebensberatung', label: 'Lebensberatung' },
+  { href: '/leistungen/einzelberatung', label: 'Einzelberatung' },
 ]
 
 export default function Nav() {
@@ -84,7 +84,6 @@ export default function Nav() {
                 </Link>
               )
             })}
-            <Link href="/kontakt" className="nav-cta">Erstgespräch →</Link>
           </div>
           <button className="hamburger" onClick={() => setMenuOpen(true)} aria-label="Menü">
             <span /><span /><span />

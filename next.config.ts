@@ -1,9 +1,14 @@
 import type { NextConfig } from 'next'
 
+const BASE_PATH = '/Beratung-Haas'
+
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: '/Beratung-Haas',
-  assetPrefix: '/Beratung-Haas',
+  basePath: BASE_PATH,
+  assetPrefix: BASE_PATH,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: BASE_PATH,
+  },
   images: {
     loader: 'custom',
     loaderFile: './imageLoader.ts',

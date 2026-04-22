@@ -1,3 +1,3 @@
 export default function imageLoader({ src }: { src: string }) {
-  return `/Beratung-Haas${src}`
+  return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${src}`
 }

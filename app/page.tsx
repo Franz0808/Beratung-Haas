@@ -4,8 +4,8 @@ import { ArrowRight } from '@/components/Icons'
 import ReviewCarousel from '@/components/ReviewCarousel'
 
 const services = [
-  { href: '/leistungen/paarberatung', title: 'Paarberatung', sub: 'Für Paare', desc: 'Wenn ihr euch im Kreis dreht, emotional verloren habt oder das Schweigen lauter wird als jedes Gespräch.' },
-  { href: '/leistungen/lebensberatung', title: 'Lebensberatung', sub: 'Für Einzelpersonen', desc: 'Wenn du in einer persönlichen Krise steckst, vor einer wichtigen Entscheidung stehst oder deine eigenen Muster verstehen willst.' },
+  { href: '/leistungen/paarberatung', title: 'Paarberatung', sub: 'Für Paare, Freundschaften & Familien', desc: 'Wenn ihr euch im Kreis dreht, emotional verloren habt oder das Schweigen lauter wird als jedes Gespräch.' },
+  { href: '/leistungen/einzelberatung', title: 'Einzelberatung', sub: 'Für Einzelpersonen', desc: 'Wenn du in einer persönlichen Krise steckst, vor einer wichtigen Entscheidung stehst oder deine eigenen Muster verstehen willst.' },
 ]
 
 const problemFragments = [
@@ -60,45 +60,31 @@ export default function HomePage() {
       {/* ── PROBLEM STATEMENT ── */}
       <section className="section section-alt">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }} className="two-col">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'flex-start' }} className="two-col">
             <div>
               <div className="label" style={{ marginBottom: 24 }}>Es beginnt oft leise</div>
               <h2 className="title-section" style={{ marginBottom: 48 }}>
                 Manches lässt sich nicht länger<br />
                 nur mit sich selbst klären.
               </h2>
-              <div style={{ borderTop: '2px solid var(--navy)', paddingTop: 32 }}>
-                <p style={{
-                  fontSize: 15,
-                  fontWeight: 600,
-                  lineHeight: 1.7,
-                  color: 'var(--navy)',
-                  maxWidth: 420,
-                  fontStyle: 'italic',
-                  margin: 0,
-                }}>
-                  Dass du hier bist, heißt nicht, dass etwas mit dir nicht stimmt. Es heißt, dass du bereit bist hinzusehen.
-                </p>
-              </div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 0, paddingTop: 39 }}>
               {problemFragments.map((fragment, i) => (
                 <p
                   key={i}
+                  className="body-text"
                   style={{
-                    fontSize: 19,
-                    fontWeight: i === 3 ? 400 : 300,
-                    lineHeight: 1.7,
-                    color: 'var(--navy)',
                     margin: 0,
                     paddingTop: i === 0 ? 0 : 24,
-                    paddingBottom: i === 3 ? 0 : 24,
+                    paddingBottom: 24,
                     borderTop: i === 0 ? 'none' : '1px solid rgba(27,61,82,0.1)',
                   }}
                 >
                   {fragment}
                 </p>
               ))}
+              <div style={{ paddingTop: 24 }}>
+              </div>
             </div>
           </div>
         </div>
@@ -129,14 +115,11 @@ export default function HomePage() {
                 <div key={s.href} style={{ flex: 1, padding: '48px', background: 'var(--warm)', position: 'relative' }}>
                   <div className="label" style={{ marginBottom: 12 }}>{s.sub}</div>
                   <h3 style={{ fontSize: 26, fontWeight: 700, letterSpacing: '-0.03em', marginBottom: 16 }}>{s.title}</h3>
-                  <p className="body-text" style={{ fontSize: 15, marginBottom: 32 }}>{s.desc}</p>
-                  <Link href={s.href} className="link-arrow">Mehr erfahren <ArrowRight /></Link>
+                  <p className="body-text" style={{ marginBottom: 32 }}>{s.desc}</p>
+                  <Link href={s.href} className="link-arrow" style={{ borderBottomColor: 'var(--navy)' }}>Mehr erfahren <ArrowRight /></Link>
                 </div>
               ))}
             </div>
-          </div>
-          <div style={{ textAlign: 'center', marginTop: 48 }}>
-            <Link href="/leistungen" className="btn-primary">Passendes Format finden <ArrowRight /></Link>
           </div>
         </div>
       </section>

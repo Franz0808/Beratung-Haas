@@ -619,7 +619,7 @@
         { id: 'ueber', label: 'Über mich' },
         { id: 'faq', label: 'FAQ' },
         { id: 'kontakt', label: 'Kontakt' }];
-      const subPages = ['paarberatung', 'lebensberatung'];
+      const subPages = ['paarberatung', 'Einzelberatung'];
 
 
       const go = (id) => { setPage(id); setMenuOpen(false); window.scrollTo(0, 0); };
@@ -679,7 +679,7 @@
 
       const services = [
         { id: 'paarberatung', title: 'Paarberatung', sub: 'Für Paare', desc: 'Wenn ihr euch im Kreis dreht, emotional verloren habt oder das Schweigen lauter wird als jedes Gespräch.' },
-        { id: 'lebensberatung', title: 'Lebensberatung', sub: 'Für Einzelpersonen', desc: 'Wenn du in einer persönlichen Krise steckst, vor einer wichtigen Entscheidung stehst oder deine eigenen Muster verstehen willst.' }];
+        { id: 'Einzelberatung', title: 'Einzelberatung', sub: 'Für Einzelpersonen', desc: 'Wenn du in einer persönlichen Krise steckst, vor einer wichtigen Entscheidung stehst oder deine eigenen Muster verstehen willst.' }];
 
 
       return (
@@ -931,10 +931,10 @@
                   <button className="link-arrow" onClick={e => { e.stopPropagation(); go('paarberatung'); }}>Zum Ablauf <ArrowRight /></button>
                 </div>
 
-                {/* Lebensberatung card */}
-                <div style={{ borderTop: '4px solid var(--navy)', padding: '56px 48px', cursor: 'pointer' }} onClick={() => go('lebensberatung')}>
+                {/* Einzelberatung card */}
+                <div style={{ borderTop: '4px solid var(--navy)', padding: '56px 48px', cursor: 'pointer' }} onClick={() => go('Einzelberatung')}>
                   <div className="label" style={{ marginBottom: 16 }}>Für Einzelpersonen</div>
-                  <h2 style={{ fontSize: 34, fontWeight: 700, letterSpacing: '-0.03em', marginBottom: 20 }}>Lebensberatung</h2>
+                  <h2 style={{ fontSize: 34, fontWeight: 700, letterSpacing: '-0.03em', marginBottom: 20 }}>Einzelberatung</h2>
                   <p className="body-text" style={{ fontSize: 15, marginBottom: 12 }}>Wenn du in einer Krise steckst, vor einer Entscheidung stehst oder deine eigenen Muster verstehen willst.</p>
                   <div style={{ margin: '28px 0', display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {['Orientierung in Lebenskrisen', 'Entscheidungen strukturiert treffen', 'Eigene Muster sichtbar machen'].map((p, i) => (
@@ -944,7 +944,7 @@
                       </div>
                     ))}
                   </div>
-                  <button className="link-arrow" onClick={e => { e.stopPropagation(); go('lebensberatung'); }}>Zum Ablauf <ArrowRight /></button>
+                  <button className="link-arrow" onClick={e => { e.stopPropagation(); go('Einzelberatung'); }}>Zum Ablauf <ArrowRight /></button>
                 </div>
               </div>
             </div>
@@ -1139,14 +1139,14 @@
       return <StepNavigator title="Paarberatung" label="Für Paare" img="uploads/WhatsApp Image 2026-04-16 at 10.19.16.jpeg" steps={steps} setPage={setPage} />;
     }
 
-    // ── LEBENSBERATUNG PAGE ───────────────────────────────────────────────────────
-    function LebensberatungPage({ setPage }) {
+    // ── Einzelberatung PAGE ───────────────────────────────────────────────────────
+    function EinzelberatungPage({ setPage }) {
       const steps = [
         {
           title: 'Erstgespräch',
           desc: 'Wir lernen uns kennen. Ich höre zu und stelle Fragen, um zu verstehen, wo du gerade stehst und was dich bewegt. Kostenlos, offen und ohne Verpflichtung.',
           tag: 'Kostenlos & unverbindlich',
-          whoText: 'Lebensberatung richtet sich an Menschen in persönlichen Orientierungsphasen: nach Trennungen, bei beruflichen Wendepunkten, Sinnfragen oder wenn das eigene Verhalten in Beziehungen immer wieder ähnliche Ergebnisse produziert.',
+          whoText: 'Einzelberatung richtet sich an Menschen in persönlichen Orientierungsphasen: nach Trennungen, bei beruflichen Wendepunkten, Sinnfragen oder wenn das eigene Verhalten in Beziehungen immer wieder ähnliche Ergebnisse produziert.',
           forWhom: ['Orientierungslosigkeit oder innere Leere', 'Wiederkehrende Beziehungsmuster', 'Wichtige Entscheidungen ohne Klarheit', 'Persönliche Krisen und Wendepunkte'],
           format: ['Online via Video – deutschlandweit', 'Vor Ort in Garmisch-Partenkirchen', 'Einzelsitzungen ab 60 Minuten', 'Prozessbegleitung über mehrere Sitzungen'],
         },
@@ -1171,7 +1171,7 @@
           tag: 'Klar & konkret',
         },
       ];
-      return <StepNavigator title="Lebensberatung" label="Für Einzelpersonen" img="uploads/WhatsApp Image 2026-04-16 at 10.22.35.jpeg" steps={steps} setPage={setPage} />;
+      return <StepNavigator title="Einzelberatung" label="Für Einzelpersonen" img="uploads/WhatsApp Image 2026-04-16 at 10.22.35.jpeg" steps={steps} setPage={setPage} />;
     }
 
     // ── ABOUT PAGE ───────────────────────────────────────────────────────────────
@@ -1182,7 +1182,7 @@
         'Systemischer Coach (zertifiziert)',
         'Über 10 Jahre Beratungspraxis',
         'Regelmäßige psychologische Supervision',
-        'Seminartätigkeit u.a. beim Polizeipräsidium Pforzheim'];
+        'Seminartätigkeit u.a. beim Polizeipräsidium Garmisch-Partenkirchen'];
 
       return (
         <main style={{ paddingTop: 72 }}>
@@ -1210,7 +1210,7 @@
                   <div style={{ height: 320, overflow: 'hidden' }}>
                     <img src="uploads/WhatsApp Image 2026-04-16 at 10.16.38.jpeg" alt="Seminarvortrag" style={{ objectPosition: 'center' }} />
                   </div>
-                  <p style={{ fontSize: 12, color: 'rgba(27,61,82,0.5)', marginTop: 8, fontStyle: 'italic' }}>Seminarvortrag beim Polizeipräsidium Pforzheim</p>
+                  <p style={{ fontSize: 12, color: 'rgba(27,61,82,0.5)', marginTop: 8, fontStyle: 'italic' }}>Seminarvortrag beim Polizeipräsidium Garmisch-Partenkirchen</p>
                 </div>
                 <div>
                   <div className="accent-bar" />
@@ -1412,7 +1412,7 @@
                       <span style={{ color: 'var(--accent)', marginTop: 2 }}><MapPin /></span>
                       <div>
                         <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 4 }}>Standort</div>
-                        <div className="body-text">Pforzheim, Baden-Württemberg<br /><span style={{ fontSize: 13, opacity: 0.7 }}>Online: deutschlandweit</span></div>
+                        <div className="body-text">Garmisch-Partenkirchen, Bayern<br /><span style={{ fontSize: 13, opacity: 0.7 }}>Online: deutschlandweit</span></div>
                       </div>
                     </div>
                   </div>
@@ -1446,7 +1446,7 @@
                       <select className="form-select" value={form.anliegen} onChange={(e) => set('anliegen', e.target.value)}>
                         <option value="paarberatung">Paarberatung</option>
                         <option value="beziehungscoaching">Beziehungscoaching</option>
-                        <option value="lebensberatung">Lebensberatung</option>
+                        <option value="Einzelberatung">Einzelberatung</option>
                         <option value="unsicher">Noch unsicher</option>
                       </select>
                     </div>
@@ -1495,7 +1495,7 @@
                   Haas<span style={{ color: 'var(--accent)' }}>.</span>Beratung
                 </div>
                 <p style={{ fontWeight: 300, fontSize: 14, lineHeight: 1.75, color: 'rgba(255,255,255,0.6)', maxWidth: 320 }}>
-                  Online Paarberatung, Beziehungscoaching & Lebensberatung. Wertschätzend. Direkt. Strukturiert. Deutschlandweit.
+                  Online Paarberatung, Beziehungscoaching & Einzelberatung. Wertschätzend. Direkt. Strukturiert. Deutschlandweit.
                 </p>
               </div>
               <div>
@@ -1605,7 +1605,7 @@
           {page === 'home' && <HomePage setPage={setPage} />}
           {page === 'leistungen' && <LeistungenPage setPage={setPage} />}
           {page === 'paarberatung' && <PaarberatungPage setPage={setPage} />}
-          {page === 'lebensberatung' && <LebensberatungPage setPage={setPage} />}
+          {page === 'Einzelberatung' && <EinzelberatungPage setPage={setPage} />}
           {page === 'ueber' && <UeberPage setPage={setPage} />}
           {page === 'faq' && <FAQPage setPage={setPage} />}
           {page === 'kontakt' && <KontaktPage />}

@@ -64,7 +64,7 @@ export default function PaarberatungPage() {
             ← Alle Angebote
           </Link>
           <div style={{ marginBottom: 16 }}>
-            <div className="label" style={{ color: 'var(--accent)' }}>Für Paare</div>
+            <div className="label">Für Paare</div>
           </div>
           <h1 className="title-section">Paarberatung</h1>
         </div>
@@ -117,7 +117,7 @@ export default function PaarberatungPage() {
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.4em', color: 'var(--accent)', flexShrink: 0, paddingTop: 3 }}>
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className="body-text" style={{ fontSize: 15, lineHeight: 1.65 }}>{p}</span>
+                <span className="body-text" style={{ lineHeight: 1.65 }}>{p}</span>
               </div>
             ))}
           </div>
@@ -128,13 +128,10 @@ export default function PaarberatungPage() {
               {/* Insight block — anchored with accent bar */}
               <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start', flex: '1 1 420px' }}>
                 <div>
-                  <p style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.65, color: 'var(--navy)', marginBottom: 10 }}>
-                    Es geht nicht nur um den Streit an sich. Oft bricht an kleinen Auslösern das auf, was sich schon lange angestaut hat.
+                  <p style={{ fontSize: 17, fontWeight: 500, lineHeight: 1.65, color: 'var(--navy)', marginBottom: 10 }}>
+                    Es geht nicht nur um den Streit an sich. Oft bricht an kleinen Auslösern das auf, was sich schon lange angestaut hat. Was dahinter wirkt, lässt sich von innen oft nur schwer erkennen.
                   </p>
-                  <p style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.65, color: 'var(--navy)', marginBottom: 10 }}>
-                    Was dahinter wirkt, lässt sich von innen oft nur schwer erkennen.
-                  </p>
-                  <p style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.7, color: 'var(--navy)', fontStyle: 'italic' }}>
+                  <p style={{ fontSize: 17, fontWeight: 600, lineHeight: 1.7, color: 'var(--navy)', fontStyle: 'italic' }}>
                     So wie es gerade ist, muss es nicht bleiben.
                   </p>
                 </div>
@@ -155,17 +152,16 @@ export default function PaarberatungPage() {
       <ProcessNavigator steps={processSteps} />
 
       {/* ── PASST DAS ZU EUCH? ── */}
-      <section className="section" style={{ background: '#fff', overflow: 'hidden' }}>
+      <section className="section" style={{ background: 'var(--warm)', overflow: 'hidden' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: 540, margin: '0 auto 80px' }}>
-            <div className="label" style={{ marginBottom: 16 }}>Passt das zu euch?</div>
-            <h2 className="title-section">Diese Beratung ist sinnvoll, wenn ihr…</h2>
+            <h2 className="title-section">Passt diese Beratung zu uns?</h2>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3 }} className="two-col">
 
             {/* Geeignet */}
-            <div style={{ background: 'var(--warm)', padding: '56px 48px 48px' }}>
+            <div style={{ background: '#fff', padding: '56px 48px 48px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 48 }}>
                 <div style={{ width: 36, height: 36, background: 'var(--navy)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -186,19 +182,18 @@ export default function PaarberatungPage() {
                   borderBottom: i < 3 ? '1px solid rgba(27,61,82,0.1)' : 'none',
                 }}>
                   <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', color: 'var(--accent)', minWidth: 24, paddingTop: 3, flexShrink: 0 }}>{String(i + 1).padStart(2, '0')}</span>
-                  <span style={{ fontWeight: 300, fontSize: 15, lineHeight: 1.7, color: 'var(--navy)' }}>{t}</span>
+                  <span style={{ fontWeight: 300, fontSize: 'clamp(15px, 1.1vw, 18px)', lineHeight: 1.7, color: 'var(--navy)' }}>{t}</span>
                 </div>
               ))}
             </div>
 
             {/* Nicht geeignet */}
-            <div style={{ background: 'var(--navy)', padding: '56px 48px 48px', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', bottom: -40, right: -20, fontSize: 220, fontWeight: 700, lineHeight: 1, color: 'rgba(255,255,255,0.03)', userSelect: 'none', pointerEvents: 'none', letterSpacing: '-0.05em' }}>—</div>
+            <div style={{ background: '#e8eef2', padding: '56px 48px 48px', position: 'relative', overflow: 'hidden' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 48, position: 'relative' }}>
-                <div style={{ width: 36, height: 36, border: '1px solid rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" /></svg>
+                <div style={{ width: 36, height: 36, border: '1px solid rgba(27,61,82,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="var(--navy)" strokeWidth="1.5" strokeLinecap="round" /></svg>
                 </div>
-                <h3 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>Nicht geeignet wenn</h3>
+                <h3 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--navy)' }}>Nicht geeignet wenn</h3>
               </div>
               {[
                 'einer von euch in einer akuten psychischen Krise ist (hier braucht es Therapie)',
@@ -211,11 +206,11 @@ export default function PaarberatungPage() {
                   alignItems: 'flex-start',
                   gap: 20,
                   padding: '22px 0',
-                  borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                  borderBottom: i < 3 ? '1px solid rgba(27,61,82,0.1)' : 'none',
                   position: 'relative',
                 }}>
-                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', color: 'rgba(255,255,255,0.25)', minWidth: 24, paddingTop: 3, flexShrink: 0 }}>{String(i + 1).padStart(2, '0')}</span>
-                  <span style={{ fontWeight: 300, fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.6)' }}>{t}</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', color: 'var(--accent)', minWidth: 24, paddingTop: 3, flexShrink: 0 }}>{String(i + 1).padStart(2, '0')}</span>
+                  <span style={{ fontWeight: 300, fontSize: 'clamp(15px, 1.1vw, 18px)', lineHeight: 1.7, color: 'var(--navy)' }}>{t}</span>
                 </div>
               ))}
             </div>
@@ -225,28 +220,26 @@ export default function PaarberatungPage() {
       </section>
 
       {/* ── FORMAT ── */}
-      <section className="section" style={{ background: 'var(--warm)' }}>
+      <section className="section" style={{ background: '#fff', paddingTop: 120, paddingBottom: 120 }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, alignItems: 'center' }} className="two-col">
-            {/* Format list — square-icon grid layout */}
+            {/* Format list */}
             <div>
-              <div style={{ marginBottom: 24 }}>
+              <div style={{ marginBottom: 32 }}>
                 <div className="label" style={{ color: 'var(--navy)' }}>Format & Setting</div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {format?.map((f, i) => (
                   <div key={i} style={{
                     display: 'flex',
-                    gap: 12,
+                    gap: 16,
                     alignItems: 'center',
-                    padding: '16px 24px 16px 0',
+                    padding: '20px 0',
                     borderTop: '1px solid rgba(27,61,82,0.1)',
-                    borderBottom: i >= (format?.length ?? 0) - 2 ? '1px solid rgba(27,61,82,0.1)' : 'none',
-                    paddingLeft: i % 2 === 1 ? 24 : 0,
-                    borderLeft: i % 2 === 1 ? '1px solid rgba(27,61,82,0.1)' : 'none',
+                    borderBottom: i === (format?.length ?? 0) - 1 ? '1px solid rgba(27,61,82,0.1)' : 'none',
                   }}>
-                    <span style={{ width: 10, height: 10, background: 'var(--accent)', flexShrink: 0, display: 'inline-block' }} />
-                    <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--navy)' }}>{f}</span>
+                    <span style={{ width: 8, height: 8, background: 'var(--accent)', flexShrink: 0, display: 'inline-block' }} />
+                    <span className="body-text">{f}</span>
                   </div>
                 ))}
               </div>

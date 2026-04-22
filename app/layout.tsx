@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Paarberatung Haas — Online & Offline',
-  description: 'Paarberatung, Beziehungscoaching & Lebensberatung mit Kim Haas. Wissenschaftlich fundiert, persönlich, wirkungsvoll. Deutschlandweit online und vor Ort in Garmisch-Partenkirchen.',
+  description: 'Paarberatung, Beziehungscoaching & Einzelberatung mit Kim Haas. Wissenschaftlich fundiert, persönlich, wirkungsvoll. Deutschlandweit online und vor Ort in Garmisch-Partenkirchen.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
