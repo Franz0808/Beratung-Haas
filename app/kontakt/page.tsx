@@ -33,8 +33,8 @@ export default function KontaktPage() {
                   <span style={{ color: 'var(--accent)', marginTop: 2 }}><Mail /></span>
                   <div>
                     <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 4 }}>E-Mail</div>
-                    <a href="mailto:info@paarberatung-haas.de" className="body-text" style={{ color: 'var(--navy)', textDecoration: 'none' }}>
-                      info@paarberatung-haas.de
+                    <a href="mailto:info@mindset-fitness.de" className="body-text" style={{ color: 'var(--navy)', textDecoration: 'none' }}>
+                      info@mindset-fitness.de
                     </a>
                   </div>
                 </div>
@@ -73,7 +73,7 @@ export default function KontaktPage() {
               <p className="body-text" style={{ marginBottom: 32 }}>
                 Alternativ kannst du auch direkt anrufen – ich freue mich auf das Gespräch.
               </p>
-              <a href="mailto:info@paarberatung-haas.de?subject=Erstgespräch anfragen" className="btn-accent" style={{ marginBottom: 16 }}>
+              <a href="mailto:info@mindset-fitness.de?subject=Erstgespräch anfragen" className="btn-accent" style={{ marginBottom: 16 }}>
                 E-Mail schreiben <ArrowRight />
               </a>
               <p style={{ fontSize: 'clamp(15px, 1.1vw, 18px)', color: 'rgba(27,61,82,0.5)', lineHeight: 1.5, marginTop: 16 }}>

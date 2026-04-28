@@ -40,7 +40,7 @@ export default function Footer() {
           <div>
             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 16 }}>Kontakt</div>
             <div style={{ fontWeight: 300, fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.9 }}>
-              <div>info@paarberatung-haas.de</div>
+              <div>info@mindset-fitness.de</div>
               <div>+49 172 3148057</div>
               <div>Garmisch-Partenkirchen, Bayern</div>
             </div>
