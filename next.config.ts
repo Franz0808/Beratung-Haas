@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next'
 
-const BASE_PATH = '/Beratung-Haas'
+const isGithubPages = process.env.DEPLOY_TARGET === 'github'
+const BASE_PATH = isGithubPages ? '/Beratung-Haas' : ''
 
 const nextConfig: NextConfig = {
   output: 'export',
@@ -10,8 +11,7 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_BASE_PATH: BASE_PATH,
   },
   images: {
-    loader: 'custom',
-    loaderFile: './imageLoader.ts',
+    unoptimized: true,
   },
   webpack: (config, { dev }) => {
     if (dev) {

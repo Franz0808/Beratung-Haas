@@ -11,8 +11,22 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://beratungmithaas.de'),
   title: 'Paarberatung Haas — Online & Offline',
   description: 'Paarberatung, Beziehungscoaching & Einzelberatung mit Kim Haas. Wissenschaftlich fundiert, persönlich, wirkungsvoll. Deutschlandweit online und vor Ort in Garmisch-Partenkirchen.',
+  openGraph: {
+    type: 'website',
+    siteName: 'Beratung mit Haas',
+    locale: 'de_DE',
+    images: [{ url: '/uploads/DSC_8576.webp', width: 1200, height: 630, alt: 'Kim Haas – Beratung mit Haas' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/uploads/DSC_8576.webp'],
+  },
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

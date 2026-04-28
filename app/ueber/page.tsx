@@ -4,6 +4,8 @@ import { ArrowRight, Check } from '@/components/Icons'
 
 export const metadata = {
   title: 'Über mich — Haas.Beratung',
+  alternates: { canonical: 'https://beratungmithaas.de/ueber' },
+  openGraph: { url: 'https://beratungmithaas.de/ueber' },
 }
 
 const pillars = [
@@ -43,7 +45,7 @@ export default function UeberPage() {
                 <div className="img-shadow" style={{ aspectRatio: '3/2', position: 'relative' }}>
                   <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
                     <Image
-                      src="/uploads/zwei_kims.jpg"
+                      src="/uploads/zwei_kims.webp"
                       alt="Kim Haas"
                       fill
                       style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -93,7 +95,7 @@ export default function UeberPage() {
               <div className="img-shadow" style={{ height: 320, position: 'relative' }}>
                 <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
                   <Image
-                    src="/uploads/whatsapp-10.16.38.jpeg"
+                    src="/uploads/whatsapp-10.16.38.webp"
                     alt="Seminarvortrag beim Polizeipräsidium Garmisch-Partenkirchen"
                     fill
                     style={{ objectFit: 'cover', objectPosition: 'center' }}

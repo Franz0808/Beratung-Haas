@@ -11,7 +11,7 @@ const faqs = [
   { q: 'Kann ich online beraten werden, wenn ich nicht in Garmisch-Partenkirchen wohne?', a: 'Ja. Ich berate deutschlandweit online per Video. Die meisten Klient:innen schätzen das sogar, weil es im vertrauten Umfeld stattfindet und flexibel in den Alltag passt.' },
   { q: 'Ist alles vertraulich?', a: 'Selbstverständlich. Alles, was in unseren Gesprächen besprochen wird, bleibt vertraulich. Ich unterliege der Schweigepflicht und arbeite im Rahmen professioneller ethischer Standards.' },
   { q: 'Was kostet eine Sitzung?', a: 'Aktuelle Preise teile ich gerne im Erstgespräch mit, da sie je nach Format und Setting variieren können. Grundsätzlich arbeite ich mit transparenten Honoraren und ohne versteckte Kosten.' },
-  { q: 'Was, wenn ich akute psychische Probleme habe?', a: 'Dann verweise ich dich an geeignete Fachkräfte – Psychotherapeuten, Psychiater oder Krisentelefone. Mein Angebot ist nicht für akute psychische Krisen geeignet. In solchen Situationen ist schnelle und professionelle Hilfe wichtig.' },
+  { q: 'Was, wenn ich akute psychische Probleme habe?', a: 'Dann verweise ich dich an geeignete Fachkräfte – Psychotherapeut:innen, Psychiater:innen oder Krisentelefone. Mein Angebot ist nicht für akute psychische Krisen geeignet. In solchen Situationen ist schnelle und professionelle Hilfe wichtig.' },
   { q: 'Was unterscheidet deine Arbeit von anderen Coaches?', a: 'Ich arbeite nicht mit Standard-Coaching-Methoden oder allgemeinen Kommunikationstipps. Mein Fokus liegt auf Beziehungsmustern, emotionalen Dynamiken und unbewussten Reaktionen – das, was zwischen den Zeilen passiert. Dazu bringe ich sowohl wissenschaftliches Fundament als auch eine sehr persönliche Perspektive mit.' },
 ]
 

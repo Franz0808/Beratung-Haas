@@ -1,9 +1,15 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from '@/components/Icons'
 import ProcessNavigator, { ProcessStep } from '@/components/ProcessNavigator'
+
+export const metadata: Metadata = {
+  title: 'Einzelberatung — Haas.Beratung',
+  description: 'Einzelberatung & persönliches Coaching mit Kim Haas. Für Menschen in Krisen, vor Entscheidungen oder auf der Suche nach Klarheit. Online & vor Ort in Garmisch-Partenkirchen.',
+  alternates: { canonical: 'https://beratungmithaas.de/leistungen/einzelberatung' },
+  openGraph: { url: 'https://beratungmithaas.de/leistungen/einzelberatung' },
+}
 
 const painPoints = [
   'Du weißt nicht mehr, wer du bist oder was du wirklich willst',
@@ -77,7 +83,7 @@ export default function EinzelberatungPage() {
             <div className="img-shadow" style={{ height: 440, position: 'relative' }}>
               <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
                 <Image
-                  src="/uploads/Einzelberatung_image.png"
+                  src="/uploads/Einzelberatung_image.webp"
                   alt="Einzelberatung"
                   fill
                   style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
@@ -161,7 +167,7 @@ export default function EinzelberatungPage() {
                 <div style={{ width: 36, height: 36, background: 'var(--navy)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </div>
-                <h3 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--navy)' }}>Geeignet für dich</h3>
+                <h3 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--navy)' }}>Geeignet für dich, wenn du...</h3>
               </div>
               {[
                 'nicht mehr weiterkommst, obwohl du viel reflektierst',
@@ -188,7 +194,7 @@ export default function EinzelberatungPage() {
                 <div style={{ width: 36, height: 36, border: '1px solid rgba(27,61,82,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="var(--navy)" strokeWidth="1.5" strokeLinecap="round" /></svg>
                 </div>
-                <h3 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--navy)' }}>Nicht geeignet wenn</h3>
+                <h3 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--navy)' }}>Nicht geeignet für dich, wenn du...</h3>
               </div>
               {[
                 'du eine akute psychische Krise hast (hier braucht es Therapie)',

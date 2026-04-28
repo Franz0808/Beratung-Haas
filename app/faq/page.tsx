@@ -4,6 +4,8 @@ import FAQAccordion from '@/components/FAQAccordion'
 
 export const metadata = {
   title: 'FAQ — Haas.Beratung',
+  alternates: { canonical: 'https://beratungmithaas.de/faq' },
+  openGraph: { url: 'https://beratungmithaas.de/faq' },
 }
 
 export default function FAQPage() {

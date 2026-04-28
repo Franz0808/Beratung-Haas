@@ -1,7 +1,15 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from '@/components/Icons'
 import ReviewCarousel from '@/components/ReviewCarousel'
+
+export const metadata: Metadata = {
+  title: 'Paarberatung Haas — Online & Offline',
+  description: 'Paarberatung, Beziehungscoaching & Einzelberatung mit Kim Haas. Wissenschaftlich fundiert, persönlich, wirkungsvoll. Deutschlandweit online und vor Ort in Garmisch-Partenkirchen.',
+  alternates: { canonical: 'https://beratungmithaas.de/' },
+  openGraph: { url: 'https://beratungmithaas.de/' },
+}
 
 const services = [
   { href: '/leistungen/paarberatung', title: 'Paarberatung', sub: 'Für Paare, Freundschaften & Familien', desc: 'Wenn ihr euch im Kreis dreht, emotional verloren habt oder das Schweigen lauter wird als jedes Gespräch.' },
@@ -45,7 +53,7 @@ export default function HomePage() {
             <div className="hero-img-wrap img-shadow" style={{ height: '75vh' }}>
               <div style={{ height: '100%', position: 'relative', overflow: 'hidden' }}>
                 <Image
-                  src="/uploads/Kim_Hero_Vertical.JPG"
+                  src="/uploads/Kim_hero_vertical.webp"
                   alt="Kim Haas – Beraterin"
                   fill
                   style={{ objectFit: 'cover', objectPosition: '50% top' }}
@@ -102,7 +110,7 @@ export default function HomePage() {
             <div className="img-shadow" style={{ position: 'relative', aspectRatio: '3/4' }}>
               <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
                 <Image
-                  src="/uploads/DSC_8576.JPG"
+                  src="/uploads/DSC_8576.webp"
                   alt="Kim Haas"
                   fill
                   style={{ objectFit: 'cover', objectPosition: '30% 20%' }}
@@ -154,7 +162,7 @@ export default function HomePage() {
               <div className="img-shadow" style={{ aspectRatio: '3/4', position: 'relative' }}>
                 <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
                   <Image
-                    src="/uploads/Kim_wall_vertical.JPG"
+                    src="/uploads/Kim_wall_vertical.webp"
                     alt="Kim Haas"
                     fill
                     style={{ objectFit: 'cover', objectPosition: '50% 20%' }}

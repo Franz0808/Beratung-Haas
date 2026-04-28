@@ -4,6 +4,8 @@ import { ArrowRight } from '@/components/Icons'
 
 export const metadata = {
   title: 'Leistungen — Paarberatung Haas',
+  alternates: { canonical: 'https://beratungmithaas.de/leistungen' },
+  openGraph: { url: 'https://beratungmithaas.de/leistungen' },
 }
 
 export default function LeistungenPage() {
@@ -70,7 +72,7 @@ export default function LeistungenPage() {
             {/* Left: Image only */}
             <div style={{ position: 'relative', aspectRatio: '1/1' }}>
               <Image
-                src="/uploads/Kim_podcast.png"
+                src="/uploads/Kim_podcast.webp"
                 alt="Kim Haas"
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'right top', borderRadius: 4 }}

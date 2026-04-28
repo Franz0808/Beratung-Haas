@@ -1,9 +1,10 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Mail, Phone, MapPin } from '@/components/Icons'
 
 export const metadata = {
   title: 'Kontakt — Haas.Beratung',
+  alternates: { canonical: 'https://beratungmithaas.de/kontakt' },
+  openGraph: { url: 'https://beratungmithaas.de/kontakt' },
 }
 
 export default function KontaktPage() {
@@ -58,14 +59,6 @@ export default function KontaktPage() {
                 </div>
               </div>
 
-              <div style={{ height: 340, overflow: 'hidden', position: 'relative' }}>
-                <Image
-                  src="/uploads/DSC_8576.JPG"
-                  alt="Kim Haas"
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
-                />
-              </div>
             </div>
 
             {/* Right CTA */}
