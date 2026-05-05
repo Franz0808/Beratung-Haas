@@ -7,8 +7,8 @@ import ProcessNavigator, { ProcessStep } from '@/components/ProcessNavigator'
 export const metadata: Metadata = {
   title: 'Einzelberatung — Beratung.Haas',
   description: 'Einzelberatung & persönliches Coaching mit Kim Haas. Für Menschen in Krisen, vor Entscheidungen oder auf der Suche nach Klarheit. Online & vor Ort in Garmisch-Partenkirchen.',
-  alternates: { canonical: 'https://beratungmithaas.de/leistungen/einzelberatung' },
-  openGraph: { url: 'https://beratungmithaas.de/leistungen/einzelberatung' },
+  alternates: { canonical: 'https://www.beratungmithaas.de/leistungen/einzelberatung' },
+  openGraph: { url: 'https://www.beratungmithaas.de/leistungen/einzelberatung' },
 }
 
 const painPoints = [

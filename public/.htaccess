@@ -7,3 +7,6 @@ RewriteRule ^(.*)$ https://www.beratungmithaas.de/$1 [R=301,L]
 # Force HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Serve leistungen.html when /leistungen is requested (avoids 403 from directory conflict)
+RewriteRule ^leistungen$ /leistungen.html [L]

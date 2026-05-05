@@ -4,8 +4,8 @@ import { ArrowRight } from '@/components/Icons'
 
 export const metadata = {
   title: 'Leistungen — Paarberatung Haas',
-  alternates: { canonical: 'https://beratungmithaas.de/leistungen' },
-  openGraph: { url: 'https://beratungmithaas.de/leistungen' },
+  alternates: { canonical: 'https://www.beratungmithaas.de/leistungen' },
+  openGraph: { url: 'https://www.beratungmithaas.de/leistungen' },
 }
 
 export default function LeistungenPage() {

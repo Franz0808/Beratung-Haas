@@ -4,8 +4,8 @@ import { ArrowRight, Check } from '@/components/Icons'
 
 export const metadata = {
   title: 'Über mich — Beratung.Haas',
-  alternates: { canonical: 'https://beratungmithaas.de/ueber' },
-  openGraph: { url: 'https://beratungmithaas.de/ueber' },
+  alternates: { canonical: 'https://www.beratungmithaas.de/ueber' },
+  openGraph: { url: 'https://www.beratungmithaas.de/ueber' },
 }
 
 const pillars = [

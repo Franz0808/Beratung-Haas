@@ -3,8 +3,8 @@ import { ArrowRight, Mail, Phone, MapPin } from '@/components/Icons'
 
 export const metadata = {
   title: 'Kontakt — Beratung.Haas',
-  alternates: { canonical: 'https://beratungmithaas.de/kontakt' },
-  openGraph: { url: 'https://beratungmithaas.de/kontakt' },
+  alternates: { canonical: 'https://www.beratungmithaas.de/kontakt' },
+  openGraph: { url: 'https://www.beratungmithaas.de/kontakt' },
 }
 
 export default function KontaktPage() {
