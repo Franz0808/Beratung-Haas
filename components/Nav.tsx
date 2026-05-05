@@ -37,8 +37,12 @@ export default function Nav() {
     <>
       <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
         <div className="nav-inner">
-          <Link href="/" className="nav-logo">
-            Haas<span style={{ color: 'var(--accent)' }}>.</span>Beratung
+          <Link href="/" className="nav-logo" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" style={{ flexShrink: 0 }}>
+              <rect width="32" height="32" fill="var(--navy)" rx="4"/>
+              <text x="16" y="23" fontFamily="Inter, sans-serif" fontSize="22" fontWeight="700" fill="#f5f3f0" textAnchor="middle">H</text>
+            </svg>
+            Beratung<span style={{ color: 'var(--accent)' }}>.</span>Haas
           </Link>
           <div className="nav-links">
             {links.map((l) => {

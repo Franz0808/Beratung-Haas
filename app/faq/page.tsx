@@ -3,7 +3,7 @@ import { ArrowRight } from '@/components/Icons'
 import FAQAccordion from '@/components/FAQAccordion'
 
 export const metadata = {
-  title: 'FAQ — Haas.Beratung',
+  title: 'FAQ — Beratung.Haas',
   alternates: { canonical: 'https://beratungmithaas.de/faq' },
   openGraph: { url: 'https://beratungmithaas.de/faq' },
 }

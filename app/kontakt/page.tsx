@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ArrowRight, Mail, Phone, MapPin } from '@/components/Icons'
 
 export const metadata = {
-  title: 'Kontakt — Haas.Beratung',
+  title: 'Kontakt — Beratung.Haas',
   alternates: { canonical: 'https://beratungmithaas.de/kontakt' },
   openGraph: { url: 'https://beratungmithaas.de/kontakt' },
 }

@@ -5,7 +5,7 @@ import { ArrowRight } from '@/components/Icons'
 import ProcessNavigator, { ProcessStep } from '@/components/ProcessNavigator'
 
 export const metadata: Metadata = {
-  title: 'Einzelberatung — Haas.Beratung',
+  title: 'Einzelberatung — Beratung.Haas',
   description: 'Einzelberatung & persönliches Coaching mit Kim Haas. Für Menschen in Krisen, vor Entscheidungen oder auf der Suche nach Klarheit. Online & vor Ort in Garmisch-Partenkirchen.',
   alternates: { canonical: 'https://beratungmithaas.de/leistungen/einzelberatung' },
   openGraph: { url: 'https://beratungmithaas.de/leistungen/einzelberatung' },
@@ -197,10 +197,10 @@ export default function EinzelberatungPage() {
                 <h3 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--navy)' }}>Nicht geeignet für dich, wenn du...</h3>
               </div>
               {[
-                'du eine akute psychische Krise hast (hier braucht es Therapie)',
-                'du Sexualberatung suchst',
-                'du schnelle Lösungen ohne Auseinandersetzung suchst',
-                'du jemanden suchst, der dir einfach sagt, was du tun sollst',
+                'eine akute psychische Krise hast (hier braucht es Therapie)',
+                'Sexualberatung suchst',
+                'schnelle Lösungen ohne Auseinandersetzung suchst',
+                'jemanden suchst, der dir einfach sagt, was du tun sollst',
               ].map((t, i) => (
                 <div key={i} style={{
                   display: 'flex',

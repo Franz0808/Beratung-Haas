@@ -5,7 +5,7 @@ import { ArrowRight } from '@/components/Icons'
 import ProcessNavigator, { ProcessStep } from '@/components/ProcessNavigator'
 
 export const metadata: Metadata = {
-  title: 'Paarberatung — Haas.Beratung',
+  title: 'Paarberatung — Beratung.Haas',
   description: 'Professionelle Paarberatung mit Kim Haas. Für Paare, die sich im Kreis drehen, den Kontakt verloren haben oder neu zueinander finden wollen. Online & vor Ort in Garmisch-Partenkirchen.',
   alternates: { canonical: 'https://beratungmithaas.de/leistungen/paarberatung' },
   openGraph: { url: 'https://beratungmithaas.de/leistungen/paarberatung' },

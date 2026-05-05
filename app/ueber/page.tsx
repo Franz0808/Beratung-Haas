@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, Check } from '@/components/Icons'
 
 export const metadata = {
-  title: 'Über mich — Haas.Beratung',
+  title: 'Über mich — Beratung.Haas',
   alternates: { canonical: 'https://beratungmithaas.de/ueber' },
   openGraph: { url: 'https://beratungmithaas.de/ueber' },
 }

@@ -5,7 +5,7 @@ import { ArrowRight } from '@/components/Icons'
 import ReviewCarousel from '@/components/ReviewCarousel'
 
 export const metadata: Metadata = {
-  title: 'Paarberatung Haas — Online & Offline',
+  title: 'Beratung Haas — Online & Offline',
   description: 'Paarberatung, Beziehungscoaching & Einzelberatung mit Kim Haas. Wissenschaftlich fundiert, persönlich, wirkungsvoll. Deutschlandweit online und vor Ort in Garmisch-Partenkirchen.',
   alternates: { canonical: 'https://beratungmithaas.de/' },
   openGraph: { url: 'https://beratungmithaas.de/' },
